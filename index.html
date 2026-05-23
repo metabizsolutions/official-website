@@ -1,0 +1,3113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetaBiz Solution - Elite Digital Services</title>
+    
+    <!-- Premium Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome 6 for modern iconography -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ==========================================
+           1. MODERN DESIGN SYSTEM & RESET
+           ========================================== */
+        :root {
+            --apple-blue: #007aff;
+            --apple-pink: #ff2d55;
+            --apple-purple: #5856d6;
+            --glass-bg: rgba(255, 255, 255, 0.45);
+            --glass-border: rgba(255, 255, 255, 0.5);
+            
+            --bg-dark: #ffffff;
+            --bg-card: rgba(255, 255, 255, 0.45);
+            --bg-card-hover: rgba(255, 255, 255, 0.65);
+            --primary: var(--apple-blue);
+            --primary-glow: rgba(0, 122, 255, 0.2);
+            --secondary: var(--apple-purple);
+            --secondary-glow: rgba(88, 86, 214, 0.2);
+            --accent: var(--apple-pink);
+            --accent-glow: rgba(255, 45, 85, 0.2);
+            --text-main: #1d1d1f;
+            --text-muted: #6e6e73;
+            --border-color: rgba(0, 0, 0, 0.06);
+            --border-hover: rgba(0, 122, 255, 0.3);
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --font-display: 'Plus Jakarta Sans', sans-serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Selection Color */
+        ::selection {
+            background-color: rgba(0, 122, 255, 0.15);
+            color: var(--primary);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.15);
+            border-radius: 10px;
+            border: 2px solid var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        /* Typography Utilities */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        /* Abstract Background Glow Blobs */
+        .ambient-glow-container {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            z-index: -2;
+            overflow: hidden;
+            pointer-events: none;
+            background: #ffffff;
+        }
+
+        .glow-blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.45;
+            animation: move linear infinite;
+        }
+
+        .blob-1 {
+            background: var(--apple-blue);
+            top: -10%;
+            left: -10%;
+            animation-duration: 25s;
+        }
+
+        .blob-2 {
+            background: var(--apple-pink);
+            top: 50%;
+            left: 70%;
+            animation-duration: 30s;
+        }
+
+        .blob-3 {
+            background: var(--apple-purple);
+            top: 80%;
+            left: 20%;
+            animation-duration: 20s;
+        }
+
+        .blob-4 {
+            background: #ffcc00;
+            top: 20%;
+            left: 40%;
+            animation-duration: 35s;
+        }
+
+        @keyframes move {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(100px, 50px) scale(1.2);
+            }
+            66% {
+                transform: translate(-50px, 150px) scale(0.8);
+            }
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+        }
+
+        /* Section Layouts */
+        section {
+            padding: 100px 24px;
+            position: relative;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-tag {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--primary);
+            margin-bottom: 12px;
+            display: inline-block;
+            font-weight: 700;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--text-main);
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .section-title span {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-desc {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* Buttons & Interactions */
+        .btn-premium {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-family: var(--font-display);
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            overflow: hidden;
+            font-size: 0.95rem;
+            letter-spacing: 0.01em;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #ffffff;
+            box-shadow: 0 4px 14px var(--primary-glow);
+        }
+
+        .btn-primary:hover {
+            background: #0066d6;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--primary-glow);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.35);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 122, 255, 0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 122, 255, 0.1);
+        }
+
+        /* ==========================================
+           2. HEADER & NAVIGATION (GLASSMORPHIC)
+           ========================================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(40px) saturate(180%);
+            -webkit-backdrop-filter: blur(40px) saturate(180%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: var(--transition-smooth);
+        }
+
+        header.scrolled {
+            padding: 8px 0;
+            background: rgba(255, 255, 255, 0.65);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 12px;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+            border-radius: 8px;
+            transition: var(--transition-smooth);
+        }
+
+        .logo-text {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--text-main);
+            background: linear-gradient(135deg, var(--text-main) 50%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.03em;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+            position: relative;
+            padding: 6px 0;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: var(--transition-smooth);
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        /* ==========================================
+           3. HERO SECTION (INTERACTIVE & GLOWING)
+           ========================================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 120px;
+            padding-bottom: 60px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 48px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-content {
+            z-index: 10;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 122, 255, 0.05);
+            border: 1px solid rgba(0, 122, 255, 0.15);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-badge i {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.6; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--text-main);
+        }
+
+        .hero-title span.glow-txt {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 600px;
+            font-weight: 400;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 3D Floating Interactive Element */
+        .hero-scene {
+            position: relative;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-sphere {
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(0, 122, 255, 0.12) 0%, rgba(88, 86, 214, 0.15) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            box-shadow: inset 0 0 40px rgba(255, 255, 255, 0.2), 0 0 50px var(--primary-glow);
+            animation: float 6s infinite ease-in-out;
+        }
+
+        .hero-ring {
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            border: 2px dashed rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            animation: spin 30s linear infinite;
+        }
+
+        .hero-ring-inner {
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            border: 1px solid var(--primary-glow);
+            border-radius: 50%;
+            animation: spin 15s linear infinite reverse;
+        }
+
+        .hero-floating-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 16px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.06), inset 0 0 10px rgba(255, 255, 255, 0.2);
+            animation: float-delayed 7s infinite ease-in-out;
+            width: max-content;
+        }
+
+        .hero-fc-1 {
+            top: 20px;
+            right: -20px;
+        }
+
+        .hero-fc-2 {
+            bottom: 20px;
+            left: -40px;
+            animation-duration: 5s;
+        }
+
+        .fc-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: var(--primary-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .hero-fc-2 .fc-icon {
+            background: var(--accent-glow);
+            color: var(--accent);
+        }
+
+        .fc-info span {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .fc-info strong {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            font-family: var(--font-display);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(3deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        @keyframes float-delayed {
+            0% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(12px) scale(1.02); }
+            100% { transform: translateY(0px) scale(1); }
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Wave SVG overlay */
+        .hero-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 64L48 58.7C96 53.3 192 42.7 288 48C384 53.3 480 74.7 576 80C672 85.3 768 74.7 864 64C960 53.3 1056 42.7 1152 42.7C1248 42.7 1344 53.3 1392 58.7L1440 64V120H1392C1344 120 1248 120 1152 120C1056 120 960 120 864 120C768 120 672 120 576 120C480 120 384 120 288 120C192 120 96 120 48 120H0V64Z" fill="%23ffffff"/></svg>');
+            background-size: cover;
+            background-repeat: no-repeat;
+            z-index: 10;
+        }
+
+        /* ==========================================
+           4. COUNTERS SECTION (SMOOTH JS COUNT UP)
+           ========================================== */
+        .counters {
+            background: rgba(255, 255, 255, 0.4);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            padding: 60px 24px;
+        }
+
+        .counters-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .counter-card {
+            text-align: center;
+            padding: 24px;
+            border-radius: 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .counter-card:hover {
+            background: var(--bg-card-hover);
+            transform: translateY(-5px);
+            border-color: var(--border-hover);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .counter-icon {
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .counter-num-box {
+            font-size: 2.8rem;
+            font-weight: 800;
+            font-family: var(--font-display);
+            color: var(--text-main);
+            line-height: 1;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .counter-card p {
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* ==========================================
+           5. ABOUT US SECTION
+           ========================================== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .about-visual {
+            position: relative;
+        }
+
+        .about-image-wrapper {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+            aspect-ratio: 4/3;
+            background: var(--bg-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-placeholder-art {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-glow) 0%, var(--secondary-glow) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-art-grid {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            transform: rotate(-12deg);
+        }
+
+        .about-art-shape {
+            width: 140px;
+            height: 140px;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            opacity: 0.3;
+            filter: blur(10px);
+            animation: morphing 10s infinite alternate ease-in-out;
+        }
+
+        @keyframes morphing {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 50% 50% 30% 70% / 50% 60% 40% 60%; }
+            100% { border-radius: 60% 40% 60% 40% / 40% 50% 50% 60%; }
+        }
+
+        .about-art-overlay-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 16px;
+            padding: 24px;
+            width: 80%;
+            text-align: center;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        .about-art-overlay-card h4 {
+            font-size: 1.4rem;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        .about-art-overlay-card p {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .about-content h3 {
+            font-size: 2.2rem;
+            color: var(--text-main);
+            line-height: 1.3;
+            margin-bottom: 24px;
+            font-weight: 800;
+        }
+
+        .about-content p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .about-feat-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .about-feat-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(0, 122, 255, 0.08);
+            border: 1px solid rgba(0, 122, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            flex-shrink: 0;
+            font-size: 1.1rem;
+        }
+
+        .about-feat-info h5 {
+            color: var(--text-main);
+            font-size: 1.05rem;
+            margin-bottom: 4px;
+        }
+
+        .about-feat-info p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* ==========================================
+           6. SERVICES SECTION (3D ACCENT CARDS)
+           ========================================== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 48px 36px;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            background: var(--bg-card-hover);
+            border-color: var(--border-hover);
+            box-shadow: 0 20px 40px rgba(0, 122, 255, 0.04);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card-glow {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+            top: -75px;
+            right: -75px;
+            opacity: 0;
+            transition: var(--transition-smooth);
+            pointer-events: none;
+        }
+
+        .service-card:hover .service-card-glow {
+            opacity: 1;
+        }
+
+        .service-icon-box {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 32px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card:nth-child(1) .service-icon-box {
+            background: rgba(0, 122, 255, 0.08);
+            border: 1px solid rgba(0, 122, 255, 0.2);
+            color: var(--primary);
+        }
+
+        .service-card:nth-child(2) .service-icon-box {
+            background: rgba(88, 86, 214, 0.08);
+            border: 1px solid rgba(88, 86, 214, 0.2);
+            color: var(--secondary);
+        }
+
+        .service-card:nth-child(3) .service-icon-box {
+            background: rgba(255, 45, 85, 0.08);
+            border: 1px solid rgba(255, 45, 85, 0.2);
+            color: var(--accent);
+        }
+
+        .service-card h3 {
+            font-size: 1.45rem;
+            color: var(--text-main);
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            flex-grow: 1;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-learn-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            position: relative;
+            z-index: 2;
+            width: max-content;
+        }
+
+        .service-learn-more i {
+            font-size: 0.8rem;
+            transition: var(--transition-smooth);
+        }
+
+        .service-card:hover .service-learn-more {
+            color: var(--primary);
+        }
+
+        .service-card:hover .service-learn-more i {
+            transform: translateX(4px);
+        }
+
+        /* ==========================================
+           7. PORTFOLIO/PROJECTS SECTION (DYNAMIC FILTER)
+           ========================================== */
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-family: var(--font-display);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 4px 15px var(--primary-glow);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            transition: var(--transition-smooth);
+        }
+
+        .portfolio-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--border-hover);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05), 0 0 25px var(--primary-glow);
+        }
+
+        .portfolio-img-box {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/10;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary-glow) 0%, var(--secondary-glow) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .portfolio-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .portfolio-placeholder-icon {
+            font-size: 3rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+            transition: var(--transition-smooth);
+        }
+
+        .portfolio-card:hover .portfolio-placeholder-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .portfolio-meta {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: rgba(255, 255, 255, 0.75);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            backdrop-filter: blur(10px);
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 4px 12px;
+            border-radius: 50px;
+        }
+
+        .portfolio-info {
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .portfolio-info h4 {
+            font-size: 1.25rem;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .portfolio-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .portfolio-tag-list {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .portfolio-tag {
+            background: rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
+
+        /* ==========================================
+           8. TESTIMONIALS SECTION (PREMIUM CAROUSEL)
+           ========================================== */
+        .testimonials-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial-slider {
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            border-radius: 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            backdrop-filter: blur(12px);
+        }
+
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            width: 100%;
+        }
+
+        .testimonial-slide {
+            min-width: 100%;
+            padding: 64px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .quote-icon {
+            font-size: 3.5rem;
+            color: var(--primary-glow);
+            margin-bottom: 24px;
+            line-height: 1;
+        }
+
+        .testimonial-slide p {
+            font-size: 1.25rem;
+            color: var(--text-main);
+            line-height: 1.8;
+            margin-bottom: 32px;
+            font-weight: 500;
+            font-style: italic;
+            max-width: 800px;
+        }
+
+        .client-info h4 {
+            font-size: 1.15rem;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .client-info span {
+            color: var(--primary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .star-rating {
+            color: #fbbf24;
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+
+        /* Carousel Navigation Controls */
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .slider-arrow {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            font-size: 1.1rem;
+        }
+
+        .slider-arrow:hover {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .slider-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .slider-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .slider-dot.active {
+            background: var(--primary);
+            width: 24px;
+            border-radius: 10px;
+        }
+
+        /* ==========================================
+           9. TEAM SECTION (GLOSS CARDS + HOVER EFFECTS)
+           ========================================== */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+
+        .team-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--border-hover);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05), 0 0 15px var(--primary-glow);
+            background: var(--bg-card-hover);
+        }
+
+        .team-img-box {
+            width: 100%;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            position: relative;
+            background: #e5e7eb;
+        }
+
+        .team-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+            filter: grayscale(20%);
+        }
+
+        .team-card:hover .team-img-box img {
+            transform: scale(1.08);
+            filter: grayscale(0%);
+        }
+
+        .team-social-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(0deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.65) 75%, transparent 100%);
+            padding: 20px 12px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            transform: translateY(100%);
+            transition: var(--transition-smooth);
+        }
+
+        .team-card:hover .team-social-overlay {
+            transform: translateY(0);
+        }
+
+        .social-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            font-size: 0.95rem;
+        }
+
+        .social-btn:hover {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 0 10px var(--primary-glow);
+            transform: scale(1.1);
+        }
+
+        .social-btn img {
+            width: 18px;
+            height: 18px;
+            transition: var(--transition-smooth);
+        }
+
+        .social-btn:hover img {
+            filter: brightness(0) invert(1);
+        }
+
+        .team-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .team-info h3 {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .team-info span {
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* ==========================================
+           10. FAQ SECTION (SMOOTH HEIGHT TRANSITION)
+           ========================================== */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .faq-item:hover {
+            border-color: var(--border-hover);
+            background: var(--bg-card-hover);
+        }
+
+        .faq-header {
+            padding: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .faq-header h3 {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            font-weight: 600;
+            margin: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .faq-item.active .faq-header h3 {
+            color: var(--primary);
+        }
+
+        .faq-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            transition: var(--transition-smooth);
+            font-size: 0.8rem;
+        }
+
+        .faq-item.active .faq-icon {
+            background: var(--primary);
+            color: #ffffff;
+            transform: rotate(45deg);
+            border-color: transparent;
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .faq-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .faq-content {
+            padding: 0 24px 24px 24px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ==========================================
+           11. CONTACT SECTION & INTERACTIVE MAP
+           ========================================== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 48px;
+            align-items: stretch;
+        }
+
+        .contact-info-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
+        }
+
+        .contact-info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            margin-top: 32px;
+            margin-bottom: 32px;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .contact-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: rgba(0, 122, 255, 0.06);
+            border: 1px solid rgba(0, 122, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .contact-text h5 {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+        }
+
+        .contact-text p {
+            color: var(--text-main);
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .contact-socials h4 {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin-bottom: 16px;
+        }
+
+        .contact-socials-grid {
+            display: flex;
+            gap: 12px;
+        }
+
+        .contact-form-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 48px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            position: relative;
+        }
+
+        .form-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: var(--transition-smooth);
+        }
+
+        .form-input {
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 14px 18px;
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+            width: 100%;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(0, 0, 0, 0.03);
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        textarea.form-input {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        /* Modern Interactive Map Container */
+        .map-section {
+            margin-top: 48px;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            height: 350px;
+            position: relative;
+        }
+
+        .map-section iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: grayscale(0.2) contrast(1.05);
+            opacity: 0.9;
+            transition: var(--transition-smooth);
+        }
+
+        .map-section:hover iframe {
+            filter: grayscale(0) contrast(1);
+            opacity: 1;
+        }
+
+        /* ==========================================
+           12. FOOTER SECTION
+           ========================================== */
+        footer {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-top: 1px solid var(--border-color);
+            padding: 80px 24px 40px 24px;
+            position: relative;
+        }
+
+        .footer-grid {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr 0.8fr 1.2fr;
+            gap: 48px;
+            margin-bottom: 64px;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            margin-top: 20px;
+            margin-bottom: 24px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .footer-links h4 {
+            color: var(--text-main);
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+            font-family: var(--font-display);
+        }
+
+        .footer-links ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            transform: translateX(4px);
+        }
+
+        .footer-contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .footer-contact-item i {
+            color: var(--primary);
+            margin-top: 4px;
+        }
+
+        .footer-contact-item p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .footer-bottom {
+            max-width: 1280px;
+            margin: 0 auto;
+            border-top: 1px solid var(--border-color);
+            padding-top: 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-bottom p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* ==========================================
+           13. FLOATING WHATSAPP & BACK TO TOP WIDGETS
+           ========================================== */
+        .whatsapp-floating {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            text-decoration: none;
+            z-index: 999;
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+            transition: var(--transition-smooth);
+            animation: pulse-ring-whatsapp 2s infinite;
+        }
+
+        .whatsapp-floating:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6);
+        }
+
+        @keyframes pulse-ring-whatsapp {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Custom Success Modal style */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition-smooth);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .success-modal {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 48px;
+            max-width: 480px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            transform: scale(0.9);
+            transition: var(--transition-smooth);
+        }
+
+        .modal-overlay.active .success-modal {
+            transform: scale(1);
+        }
+
+        .modal-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--primary-glow);
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 24px auto;
+            animation: bounceIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .success-modal h3 {
+            font-size: 1.8rem;
+            color: var(--text-main);
+            margin-bottom: 12px;
+        }
+
+        .success-modal p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        /* ==========================================
+           14. MEDIA RESPONSIVE BREAKPOINTS
+           ========================================== */
+        @media (max-width: 1024px) {
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr) !important;
+            }
+            .services-grid, .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 60px 16px;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+                text-align: center;
+            }
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            .hero-subtitle {
+                margin: 0 auto 32px auto;
+            }
+            .hero-actions {
+                justify-content: center;
+            }
+            .hero-visual {
+                order: -1;
+            }
+            .counters-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .about-grid, .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+            .testimonial-slide {
+                padding: 40px 24px;
+            }
+            .testimonial-slide p {
+                font-size: 1.05rem;
+            }
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+            .contact-form-panel, .contact-info-panel {
+                padding: 32px 24px;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .nav-toggle {
+                display: block;
+            }
+            .nav-menu {
+                position: fixed;
+                top: 73px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 73px);
+                background: rgba(255, 255, 255, 0.96);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                gap: 40px;
+                transition: 0.4s ease-in-out;
+                z-index: 999;
+                border-top: 1px solid var(--border-color);
+            }
+            .nav-menu.active {
+                left: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .counters-grid {
+                grid-template-columns: 1fr;
+            }
+            .team-grid {
+                grid-template-columns: 1fr !important;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+            .services-grid, .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ambient Glowing Background Blobs -->
+    <div class="ambient-glow-container">
+        <div class="glow-blob blob-1"></div>
+        <div class="glow-blob blob-2"></div>
+        <div class="glow-blob blob-3"></div>
+        <div class="glow-blob blob-4"></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header id="header">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="./images/image.png" alt="MetaBiz Logo" onerror="this.src='https://placehold.co/100x100/26110a/ff5e36?text=MB'">
+                <span class="logo-text">MetaBiz</span>
+            </a>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#portfolio" class="nav-link">Projects</a></li>
+                <li><a href="#team" class="nav-link">Team</a></li>
+                <li><a href="#faq" class="nav-link">FAQ</a></li>
+                <li><a href="https://wa.me/923226527520?text=Hello%20MetaBiz,%20I'd%20like%20to%20get%20started%20on%20a%20digital%20solution%20project!" target="_blank" class="nav-link btn-premium btn-secondary" style="padding: 10px 20px; border-radius: 30px;">Get Started</a></li>
+            </ul>
+
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-sparkles"></i>
+                    <span>Your Digital Evolution Starts Here</span>
+                </div>
+                <h1 class="hero-title">
+                    Empowering Brands <br>
+                    With <span class="glow-txt">MetaBiz Solutions</span>
+                </h1>
+                <p class="hero-subtitle">
+                    We combine elite-level software development, world-class custom web design, and visual strategies to elevate your brand presence globally. High performance. Sleek aesthetics. Modern scaling.
+                </p>
+                <div class="hero-actions">
+                    <a href="https://wa.me/923226527520?text=Hello%20MetaBiz,%20I%20am%20interested%20in%20booking%20a%20consultation%20for%20a%20digital%20solution%20project!" target="_blank" class="btn-premium btn-primary">Book Consultation <i class="fab fa-whatsapp" style="margin-left: 8px;"></i></a>
+                    <a href="#services" class="btn-premium btn-secondary">Explore Services</a>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="hero-scene">
+                    <div class="hero-ring"></div>
+                    <div class="hero-ring-inner"></div>
+                    <div class="hero-sphere"></div>
+                    
+                    <!-- Floating Stat Cards -->
+                    <div class="hero-floating-card hero-fc-1">
+                        <div class="fc-icon"><i class="fas fa-bolt"></i></div>
+                        <div class="fc-info">
+                            <span>High Speed</span>
+                            <strong>100% Performance</strong>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-floating-card hero-fc-2">
+                        <div class="fc-icon"><i class="fas fa-shield-halved"></i></div>
+                        <div class="fc-info">
+                            <span>Reliable Scaling</span>
+                            <strong>Enterprise Grade</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-wave"></div>
+    </section>
+
+    <!-- Counters Section -->
+    <section class="counters">
+        <div class="counters-grid">
+            <div class="counter-card">
+                <div class="counter-icon"><i class="far fa-clock"></i></div>
+                <div class="counter-num-box"><span class="counter-number" data-target="13500">0</span><span>+</span></div>
+                <p>Working Hours</p>
+            </div>
+            
+            <div class="counter-card">
+                <div class="counter-icon"><i class="fas fa-gift"></i></div>
+                <div class="counter-num-box"><span class="counter-number" data-target="720">0</span><span>+</span></div>
+                <p>Completed Projects</p>
+            </div>
+            
+            <div class="counter-card">
+                <div class="counter-icon"><i class="fas fa-users"></i></div>
+                <div class="counter-num-box"><span class="counter-number" data-target="480">0</span><span>+</span></div>
+                <p>Happy Clients</p>
+            </div>
+            
+            <div class="counter-card">
+                <div class="counter-icon"><i class="fas fa-award"></i></div>
+                <div class="counter-num-box"><span class="counter-number" data-target="120">0</span><span>+</span></div>
+                <p>Awards Received</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about">
+        <div class="about-grid">
+            <div class="about-visual">
+                <div class="about-image-wrapper">
+                    <div class="about-placeholder-art">
+                        <div class="about-art-grid"></div>
+                        <div class="about-art-shape"></div>
+                        <div class="about-art-overlay-card">
+                            <h4>Creative Powerhouse</h4>
+                            <p>Brainstorming great ideas, all the time</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-content">
+                <span class="section-tag">About MetaBiz</span>
+                <h3>We Make Creativity Work For Your Brand!</h3>
+                <p>
+                    Ours is a dedicated team of creatives brainstorming on revolutionary ideas, all the time. With custom digital expertise spanning across software architecture, advanced web engineering, and strategic graphic communication, we deliver innovative, tailor-made solutions built to guarantee market leadership.
+                </p>
+                
+                <div class="about-features">
+                    <div class="about-feat-item">
+                        <div class="about-feat-icon"><i class="fas fa-compass-drafting"></i></div>
+                        <div class="about-feat-info">
+                            <h5>Expert Designing</h5>
+                            <p>Modern aesthetics aligned with functional user psychology.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="about-feat-item">
+                        <div class="about-feat-icon"><i class="fas fa-code"></i></div>
+                        <div class="about-feat-info">
+                            <h5>Robust Engineering</h5>
+                            <p>Flawless web and custom software systems built for high performance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" style="border-top: 1px solid var(--border-color);">
+        <div class="section-header">
+            <span class="section-tag">Elite Capability</span>
+            <h2 class="section-title">Innovative <span>Services</span></h2>
+            <p class="section-desc">We build high-quality digital solutions and products, helping brands accelerate scale with absolute visual distinction.</p>
+        </div>
+        
+        <div class="services-grid" style="grid-template-columns: repeat(3, 1fr); gap: 24px;">
+            <!-- Service Card 1 -->
+            <div class="service-card">
+                <div class="service-card-glow"></div>
+                <div class="service-icon-box"><i class="fas fa-cash-register"></i></div>
+                <h3>POS Systems</h3>
+                <p>Bespoke Point of Sale management software engineered specifically for high-efficiency Restaurants, Bakeries, Departmental Stores, and Pharmacies. Handles smart inventory tracking, rapid invoicing, recipes, and detailed analytics.</p>
+                <a href="https://wa.me/923226527520?text=Hello%20MetaBiz,%20I%20would%20like%20to%20consult%20about%20a%20Restaurant%20or%20Retail%20POS%20system!" target="_blank" class="service-learn-more">Get Started <i class="fab fa-whatsapp"></i></a>
+            </div>
+            
+            <!-- Service Card 2 -->
+            <div class="service-card">
+                <div class="service-card-glow"></div>
+                <div class="service-icon-box"><i class="fas fa-mobile-screen-button"></i></div>
+                <h3>Mobile Apps</h3>
+                <p>Advanced native and cross-platform mobile apps for iOS and Android. Engineered for maximum speed, security controls, and highly responsive tactile interactions built to streamline user acquisition.</p>
+                <a href="https://wa.me/923226527520?text=Hello%20MetaBiz,%20I%20would%20like%20to%20consult%20about%20a%20Mobile%20App%20project!" target="_blank" class="service-learn-more">Get Started <i class="fab fa-whatsapp"></i></a>
+            </div>
+            
+            <!-- Service Card 3 -->
+            <div class="service-card">
+                <div class="service-card-glow"></div>
+                <div class="service-icon-box"><i class="fas fa-bezier-curve"></i></div>
+                <h3>Graphic Designing</h3>
+                <p>Premium visual communications including strategic brand logos, cohesive web banner packages, custom high-end portrait illustrations, and total layout UI/UX alignment to command modern lead conversion.</p>
+                <a href="https://wa.me/923226527520?text=Hello%20MetaBiz,%20I%20would%20like%20to%20consult%20about%20Graphic%20Designing,%20Logos,%20or%20Illustrations!" target="_blank" class="service-learn-more">Get Started <i class="fab fa-whatsapp"></i></a>
+            </div>
+
+            <!-- Service Card 4 -->
+            <div class="service-card">
+                <div class="service-card-glow"></div>
+                <div class="service-icon-box"><i class="fab fa-wordpress"></i></div>
+                <h3>WordPress &amp; Shopify</h3>
+                <p>Custom store setup, theme architecture, payment portals, and lead widgets. We construct high-converting Shopify e-stores and lightning-fast WordPress frameworks optimized for organic traffic scaling.</p>
+                <a href="https://wa.me/923226527520?text=Hello%20MetaBiz,%20I%20would%20like%20to%20consult%20about%20a%20WordPress%20or%20Shopify%20website!" target="_blank" class="service-learn-more">Get Started <i class="fab fa-whatsapp"></i></a>
+            </div>
+
+            <!-- Service Card 5 -->
+            <div class="service-card">
+                <div class="service-card-glow"></div>
+                <div class="service-icon-box"><i class="fas fa-gears"></i></div>
+                <h3>Customized Softwares</h3>
+                <p>Robust desktop, database, and cloud systems engineered in powerful Python and C#. Custom ERPs, smart data pipelines, and hardware interface controllers custom built to solve company workflows.</p>
+                <a href="https://wa.me/923226527520?text=Hello%20MetaBiz,%20I%20would%20like%20to%20consult%20about%20custom%20software%20solutions!" target="_blank" class="service-learn-more">Get Started <i class="fab fa-whatsapp"></i></a>
+            </div>
+
+            <!-- Service Card 6 -->
+            <div class="service-card">
+                <div class="service-card-glow"></div>
+                <div class="service-icon-box"><i class="fas fa-laptop-code"></i></div>
+                <h3>Web Development</h3>
+                <p>State-of-the-art front-end user experience paired with robust back-end systems. Lightweight corporate web assets optimized for immediate search ranking and absolute responsiveness across viewports.</p>
+                <a href="https://wa.me/923226527520?text=Hello%20MetaBiz,%20I%20would%20like%20to%20consult%20about%20a%20custom%20web%20design!" target="_blank" class="service-learn-more">Get Started <i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+
+        <!-- Developers Skill Notice Banner -->
+        <div style="margin-top: 48px; background: rgba(255, 94, 54, 0.04); border: 1px solid rgba(255, 94, 54, 0.15); border-radius: 20px; padding: 24px 32px; display: flex; align-items: center; gap: 20px; backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(255, 94, 54, 0.02);">
+            <div style="width: 54px; height: 54px; border-radius: 14px; background: rgba(255, 94, 54, 0.08); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0;">
+                <i class="fas fa-user-tie"></i>
+            </div>
+            <div>
+                <h4 style="font-family: var(--font-display); color: var(--text-main); font-size: 1.15rem; margin-bottom: 4px;">Top-Notch Industry Talent</h4>
+                <p style="color: var(--text-muted); font-size: 0.92rem; margin: 0; line-height: 1.5;">Our engineering team is composed of highly skilled, top-tier developers who hold a proven track record of elite-level ratings across international freelancing networks and industrial tech companies, guaranteeing ultimate technical execution.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio/Projects Section -->
+    <section id="portfolio" style="border-top: 1px solid var(--border-color);">
+        <div class="section-header">
+            <span class="section-tag">Proven Results</span>
+            <h2 class="section-title">Case Studies &amp; <span>Projects</span></h2>
+            <p class="section-desc">Explore our stellar track record of high-performance digital projects that combine clean code with elegant styling.</p>
+        </div>
+        
+        <div class="portfolio-filters">
+            <button class="filter-btn active" data-filter="all">All Solutions</button>
+            <button class="filter-btn" data-filter="web">Web Products</button>
+            <button class="filter-btn" data-filter="software">Custom Software</button>
+            <button class="filter-btn" data-filter="graphics">Creative Design</button>
+        </div>
+        
+        <div class="portfolio-grid" id="portfolio-grid" style="grid-template-columns: repeat(3, 1fr); gap: 24px;">
+            <!-- Project 1: Baloch Tools -->
+            <div class="portfolio-card" data-category="software" style="grid-column: span 3; display: grid; grid-template-columns: 1fr 1.5fr; gap: 0;">
+                <div class="portfolio-img-box" style="height: 100%; aspect-ratio: auto; min-height: 380px;">
+                    <div class="portfolio-placeholder">
+                        <div class="portfolio-placeholder-icon" style="font-size: 4rem;"><i class="fas fa-screwdriver-wrench"></i></div>
+                        <span class="portfolio-meta" style="top: 24px; left: 24px;">Enterprise Desktop POS</span>
+                        <div style="position: absolute; bottom: 24px; left: 24px; background: var(--accent); color: #ffffff; padding: 6px 16px; border-radius: 50px; font-weight: 800; font-family: var(--font-display); font-size: 1.05rem; box-shadow: 0 4px 15px var(--accent-glow);">200,000 PKR Budget</div>
+                    </div>
+                </div>
+                <div class="portfolio-info" style="padding: 40px; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <h4 style="font-size: 1.7rem; margin-bottom: 8px;">Baloch Tools &amp; Welding Material POS Software</h4>
+                        <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">An elite-grade inventory management and multi-user billing suite built with CustomTkinter and local database sync.</p>
+                        
+                        <div style="margin-bottom: 24px;">
+                            <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--primary); font-weight: 700; display: block; margin-bottom: 8px;">Key System Features:</span>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; font-size: 0.82rem; color: var(--text-muted); max-height: 160px; overflow-y: auto; padding-right: 8px; border-right: 1px solid var(--border-color);">
+                                <div><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 6px;"></i> Admin &amp; Cashier Permission System</div>
+                                <div><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 6px;"></i> Real-time Barcode &amp; Search System</div>
+                                <div><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 6px;"></i> Purchase vs Sale Profit Math</div>
+                                <div><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 6px;"></i> SQLite Local Database Engine</div>
+                                <div><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 6px;"></i> Vendor ledger &amp; payment tracking</div>
+                                <div><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 6px;"></i> Automatic &amp; OneDrive Cloud Backups</div>
+                                <div><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 6px;"></i> Printable Invoices &amp; PDF reports</div>
+                                <div><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 6px;"></i> Sales Staff tracking ("Sold By")</div>
+                                <div><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 6px;"></i> Product Size, Weight &amp; Brand Track</div>
+                                <div><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 6px;"></i> Low Stock Alerts &amp; Change Logs</div>
+                                <div><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 6px;"></i> Offline local execution support</div>
+                                <div><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 6px;"></i> Live Online Dashboard Website</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-tag-list" style="margin-top: 12px;">
+                        <span class="portfolio-tag">CustomTkinter</span>
+                        <span class="portfolio-tag">Python GUI</span>
+                        <span class="portfolio-tag">SQLite Database</span>
+                        <span class="portfolio-tag">OneDrive API</span>
+                        <span class="portfolio-tag">Web Dashboard</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: Gasoora Brothers -->
+            <div class="portfolio-card" data-category="software">
+                <div class="portfolio-img-box">
+                    <div class="portfolio-placeholder">
+                        <div class="portfolio-placeholder-icon"><i class="fas fa-pizza-slice"></i></div>
+                        <span class="portfolio-meta">Dual POS Software</span>
+                        <div style="position: absolute; bottom: 16px; left: 16px; background: var(--accent); color: #ffffff; padding: 4px 12px; border-radius: 50px; font-weight: 700; font-family: var(--font-display); font-size: 0.85rem;">60,000 PKR Budget</div>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h4>Gasoora Brothers Restaurant &amp; Bakery</h4>
+                    <p>Designed and deployed two distinct, specialized POS software suites. Features custom recipe database mapping, KOT ticket management, sales ledger logging, and fast checkouts.</p>
+                    <div class="portfolio-tag-list">
+                        <span class="portfolio-tag">C# Desktop</span>
+                        <span class="portfolio-tag">Bakery POS</span>
+                        <span class="portfolio-tag">KOT Routing</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: Shamim Autos -->
+            <div class="portfolio-card" data-category="software">
+                <div class="portfolio-img-box">
+                    <div class="portfolio-placeholder">
+                        <div class="portfolio-placeholder-icon"><i class="fas fa-car-rear"></i></div>
+                        <span class="portfolio-meta">Custom POS Suite</span>
+                        <div style="position: absolute; bottom: 16px; left: 16px; background: var(--accent); color: #ffffff; padding: 4px 12px; border-radius: 50px; font-weight: 700; font-family: var(--font-display); font-size: 0.85rem;">100,000 PKR Budget</div>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h4>Shamim Autos Spare Parts &amp; Ledger</h4>
+                    <p>Highly customized parts inventory database with advanced serial tracking, supplier billing ledgers, vehicle category search, and cashier permission locks.</p>
+                    <div class="portfolio-tag-list">
+                        <span class="portfolio-tag">Python</span>
+                        <span class="portfolio-tag">Autoparts DB</span>
+                        <span class="portfolio-tag">Accounting</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4: Desi Bite -->
+            <div class="portfolio-card" data-category="web">
+                <div class="portfolio-img-box">
+                    <div class="portfolio-placeholder">
+                        <div class="portfolio-placeholder-icon"><i class="fas fa-utensils"></i></div>
+                        <span class="portfolio-meta">Local Networking App</span>
+                        <div style="position: absolute; bottom: 16px; left: 16px; background: var(--accent); color: #ffffff; padding: 4px 12px; border-radius: 50px; font-weight: 700; font-family: var(--font-display); font-size: 0.85rem;">60,000 PKR Budget</div>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h4>Desi Bite Multi-Terminal Web System</h4>
+                    <p>Web-based restaurant ordering and billing portal featuring local networking synchronization, multi-terminal cashier screens, kitchen order ticket (KOT) routing, and table billing status.</p>
+                    <div class="portfolio-tag-list">
+                        <span class="portfolio-tag">NodeJS Backend</span>
+                        <span class="portfolio-tag">Local Network Sync</span>
+                        <span class="portfolio-tag">KOT Routing</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5: Android Firebase App -->
+            <div class="portfolio-card" data-category="web">
+                <div class="portfolio-img-box">
+                    <div class="portfolio-placeholder">
+                        <div class="portfolio-placeholder-icon"><i class="fab fa-android"></i></div>
+                        <span class="portfolio-meta">Android Mobile App</span>
+                        <div style="position: absolute; bottom: 16px; left: 16px; background: var(--accent); color: #ffffff; padding: 4px 12px; border-radius: 50px; font-weight: 700; font-family: var(--font-display); font-size: 0.85rem;">50,000 PKR Budget</div>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h4>Android Application with Real-Time Database</h4>
+                    <p>Mobile solution featuring Firebase real-time database sync, offline data caching, user authentication controls, push alerts, and direct WhatsApp consult integrations.</p>
+                    <div class="portfolio-tag-list">
+                        <span class="portfolio-tag">Kotlin</span>
+                        <span class="portfolio-tag">Firebase DB</span>
+                        <span class="portfolio-tag">Live Sync</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6: Shopify Storefront -->
+            <div class="portfolio-card" data-category="web">
+                <div class="portfolio-img-box">
+                    <div class="portfolio-placeholder">
+                        <div class="portfolio-placeholder-icon"><i class="fab fa-shopify"></i></div>
+                        <span class="portfolio-meta">eCommerce Store</span>
+                        <div style="position: absolute; bottom: 16px; left: 16px; background: var(--accent); color: #ffffff; padding: 4px 12px; border-radius: 50px; font-weight: 700; font-family: var(--font-display); font-size: 0.85rem;">30,000 PKR Budget</div>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h4>Elite Shopify E-Commerce Storefront</h4>
+                    <p>Optimized Shopify setup with custom layouts, payment integrations, visual collections design, smart cart upsells, and responsive theme configurations.</p>
+                    <div class="portfolio-tag-list">
+                        <span class="portfolio-tag">Shopify Liquid</span>
+                        <span class="portfolio-tag">eCommerce UI</span>
+                        <span class="portfolio-tag">Payment Setup</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 7: WordPress Website -->
+            <div class="portfolio-card" data-category="web">
+                <div class="portfolio-img-box">
+                    <div class="portfolio-placeholder">
+                        <div class="portfolio-placeholder-icon"><i class="fab fa-wordpress"></i></div>
+                        <span class="portfolio-meta">Corporate Website</span>
+                        <div style="position: absolute; bottom: 16px; left: 16px; background: var(--accent); color: #ffffff; padding: 4px 12px; border-radius: 50px; font-weight: 700; font-family: var(--font-display); font-size: 0.85rem;">30,000 PKR Budget</div>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h4>WordPress Corporate Platform</h4>
+                    <p>Highly optimized, clean WordPress platform built with custom widgets, contact pages, SEO optimization, and lightning-fast loading speeds across devices.</p>
+                    <div class="portfolio-tag-list">
+                        <span class="portfolio-tag">WordPress API</span>
+                        <span class="portfolio-tag">Elementor Pro</span>
+                        <span class="portfolio-tag">SEO Optimized</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 8: Pharmacy POS -->
+            <div class="portfolio-card" data-category="software">
+                <div class="portfolio-img-box">
+                    <div class="portfolio-placeholder">
+                        <div class="portfolio-placeholder-icon"><i class="fas fa-prescription-bottle-medical"></i></div>
+                        <span class="portfolio-meta">Medical POS</span>
+                        <div style="position: absolute; bottom: 16px; left: 16px; background: var(--accent); color: #ffffff; padding: 4px 12px; border-radius: 50px; font-weight: 700; font-family: var(--font-display); font-size: 0.85rem;">70,000 PKR Budget</div>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h4>Al-Shifa Pharmacy Ledger &amp; POS</h4>
+                    <p>Specialized medical store POS tracking drug batch codes, automatic expiry notifications, search by salt/formula name, and vendor supply management logs.</p>
+                    <div class="portfolio-tag-list">
+                        <span class="portfolio-tag">C# Desktop</span>
+                        <span class="portfolio-tag">Pharmacy POS</span>
+                        <span class="portfolio-tag">Expiry Alert</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 9: Supermarket Suite -->
+            <div class="portfolio-card" data-category="software">
+                <div class="portfolio-img-box">
+                    <div class="portfolio-placeholder">
+                        <div class="portfolio-placeholder-icon"><i class="fas fa-basket-shopping"></i></div>
+                        <span class="portfolio-meta">Retail POS Suite</span>
+                        <div style="position: absolute; bottom: 16px; left: 16px; background: var(--accent); color: #ffffff; padding: 4px 12px; border-radius: 50px; font-weight: 700; font-family: var(--font-display); font-size: 0.85rem;">150,000 PKR Budget</div>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h4>Medina Supermarket Retail POS System</h4>
+                    <p>Enterprise retail checkout system supporting multi-terminal lane sync, real-time product search, barcode generation, daily profit reporting, and shift logging.</p>
+                    <div class="portfolio-tag-list">
+                        <span class="portfolio-tag">Python GUI</span>
+                        <span class="portfolio-tag">Multi-Terminal Sync</span>
+                        <span class="portfolio-tag">SQL Server</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 10: Baloch Tools UI Mockup -->
+            <div class="portfolio-card" data-category="graphics">
+                <div class="portfolio-img-box">
+                    <div class="portfolio-placeholder">
+                        <div class="portfolio-placeholder-icon"><i class="fas fa-object-group"></i></div>
+                        <span class="portfolio-meta">UI/UX Design</span>
+                        <div style="position: absolute; bottom: 16px; left: 16px; background: var(--accent); color: #ffffff; padding: 4px 12px; border-radius: 50px; font-weight: 700; font-family: var(--font-display); font-size: 0.85rem;">15,000 PKR Budget</div>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h4>Baloch Tools Mobile UI/UX Design</h4>
+                    <p>Complete interface redesign and Figma prototyping for the Baloch Tools mobile companion application. Focuses on user-centric layouts and HSL glowing accents.</p>
+                    <div class="portfolio-tag-list">
+                        <span class="portfolio-tag">Figma Pro</span>
+                        <span class="portfolio-tag">UX Prototyping</span>
+                        <span class="portfolio-tag">Brand Identity</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 11: Gasoora Identity Kit -->
+            <div class="portfolio-card" data-category="graphics">
+                <div class="portfolio-img-box">
+                    <div class="portfolio-placeholder">
+                        <div class="portfolio-placeholder-icon"><i class="fas fa-palette"></i></div>
+                        <span class="portfolio-meta">Brand Identity</span>
+                        <div style="position: absolute; bottom: 16px; left: 16px; background: var(--accent); color: #ffffff; padding: 4px 12px; border-radius: 50px; font-weight: 700; font-family: var(--font-display); font-size: 0.85rem;">20,000 PKR Budget</div>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h4>Gasoora Brothers Visual Branding Kit</h4>
+                    <p>Designed cohesive visual branding including high-end logos, custom packaging vector templates, menus, staff uniforms, and digital banners.</p>
+                    <div class="portfolio-tag-list">
+                        <span class="portfolio-tag">Adobe Illustrator</span>
+                        <span class="portfolio-tag">Vector Kit</span>
+                        <span class="portfolio-tag">Vector Illustration</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" style="border-top: 1px solid var(--border-color);">
+        <div class="section-header">
+            <span class="section-tag">Client Voices</span>
+            <h2 class="section-title">Satisfied <span>Clients</span></h2>
+            <p class="section-desc">Discover the real-world feedback from business leaders who scaled with MetaBiz Solutions.</p>
+        </div>
+        
+        <div class="testimonials-container">
+            <div class="testimonial-slider">
+                <div class="testimonial-track" id="testimonial-track">
+                    <!-- Slide 1 -->
+                    <div class="testimonial-slide">
+                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                        <p>"MetaBiz built a custom Pharmacy POS system for our 3 branches. The real-time drug expiry alerts and inventory sync are flawless. Flawless execution!"</p>
+                        <div class="client-info">
+                            <h4>Tariq Mahmoud</h4>
+                            <span>CEO, Al-Buraq Pharmacy</span>
+                            <div class="star-rating">★★★★★</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 2 -->
+                    <div class="testimonial-slide">
+                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                        <p>"Our bakery POS system with custom recipe ingredient costing is saving us hours. Muhammad Haseeb and his team are true geniuses!"</p>
+                        <div class="client-info">
+                            <h4>Fatima Al-Zahra</h4>
+                            <span>Founder, Bloom Bakery</span>
+                            <div class="star-rating">★★★★★</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 3 -->
+                    <div class="testimonial-slide">
+                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                        <p>"The Android/iOS mobile tracking app they built is fast, lightweight, and syncs offline perfectly. Our field team is absolutely loving it!"</p>
+                        <div class="client-info">
+                            <h4>Marcus Thorne</h4>
+                            <span>Director, Apex Logistics</span>
+                            <div class="star-rating">★★★★★</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 4 -->
+                    <div class="testimonial-slide">
+                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                        <p>"Restaurant POS with multi-terminal kitchen display screens. The speed of processing orders has doubled. Incredibly top-notch developers!"</p>
+                        <div class="client-info">
+                            <h4>Zayd Al-Hassan</h4>
+                            <span>Owner, Shawarma Express Chain</span>
+                            <div class="star-rating">★★★★★</div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5 -->
+                    <div class="testimonial-slide">
+                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                        <p>"Our Shopify storefront conversion rates increased by 40% after MetaBiz redesigned the UI/UX. The custom animations are simply stunning."</p>
+                        <div class="client-info">
+                            <h4>Sarah Jenkins</h4>
+                            <span>Co-Founder, Muse Boutique</span>
+                            <div class="star-rating">★★★★★</div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 6 -->
+                    <div class="testimonial-slide">
+                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                        <p>"An enterprise-level retail inventory POS system managing 20k+ SKUs smoothly. The C# database backend handles high transaction volume easily."</p>
+                        <div class="client-info">
+                            <h4>Bilal Ibrahim</h4>
+                            <span>Director, Medina Departmental Store</span>
+                            <div class="star-rating">★★★★★</div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 7 -->
+                    <div class="testimonial-slide">
+                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                        <p>"We commissioned a custom Python scraping & automation software. Their coding standards are exceptionally high. Highly recommended!"</p>
+                        <div class="client-info">
+                            <h4>Liam Henderson</h4>
+                            <span>CTO, Venture Capital Partners</span>
+                            <div class="star-rating">★★★★★</div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 8 -->
+                    <div class="testimonial-slide">
+                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                        <p>"A gorgeous custom WordPress booking website for our medical clinic. Fully HIPAA compliant, secure, and super responsive on mobile."</p>
+                        <div class="client-info">
+                            <h4>Aisha Farooq</h4>
+                            <span>MD, Zenith Healthcare</span>
+                            <div class="star-rating">★★★★★</div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 9 -->
+                    <div class="testimonial-slide">
+                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                        <p>"Babar Ali's portrait illustrations and custom brand banners gave our agency a complete premium identity refresh. A true creative mastermind."</p>
+                        <div class="client-info">
+                            <h4>Sophia Caldwell</h4>
+                            <span>Marketing Manager, Ignite Media</span>
+                            <div class="star-rating">★★★★★</div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 10 -->
+                    <div class="testimonial-slide">
+                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                        <p>"Bakery order tracker POS that automatically calculates batch sizes. The interface is intuitive and the support team is always available."</p>
+                        <div class="client-info">
+                            <h4>Saad Rehman</h4>
+                            <span>Founder, Gourmet Delights Bakery</span>
+                            <div class="star-rating">★★★★★</div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 11 -->
+                    <div class="testimonial-slide">
+                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                        <p>"A custom WordPress WooCommerce solution with high security and seamless payment methods. The best agency experience we've had!"</p>
+                        <div class="client-info">
+                            <h4>Emma Watson</h4>
+                            <span>Owner, Clover Cosmetics</span>
+                            <div class="star-rating">★★★★★</div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 12 -->
+                    <div class="testimonial-slide">
+                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                        <p>"Highly functional custom ERP software for our textile factory. Tracks manufacturing steps and invoices in real-time. Simply brilliant."</p>
+                        <div class="client-info">
+                            <h4>Maryam Yusuf</h4>
+                            <span>CEO, Al-Falah Apparel</span>
+                            <div class="star-rating">★★★★★</div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 13 -->
+                    <div class="testimonial-slide">
+                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                        <p>"Their C# desktop integration for our manufacturing pipeline works flawlessly. Top-notch industry talent who understands technical requirements."</p>
+                        <div class="client-info">
+                            <h4>David Miller</h4>
+                            <span>VP of Engineering, CoreTech USA</span>
+                            <div class="star-rating">★★★★★</div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 14 -->
+                    <div class="testimonial-slide">
+                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                        <p>"Custom Shopify subscription app with automated email triggers. Highly skilled team who delivered exactly what they promised."</p>
+                        <div class="client-info">
+                            <h4>Zainab Al-Attas</h4>
+                            <span>Founder, Oasis Perfumes</span>
+                            <div class="star-rating">★★★★★</div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 15 -->
+                    <div class="testimonial-slide">
+                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                        <p>"WordPress property listing site with custom filter widgets and map APIs. MetaBiz exceeded our speed and aesthetic requirements."</p>
+                        <div class="client-info">
+                            <h4>Christopher Vance</h4>
+                            <span>Director, Elite Real Estate</span>
+                            <div class="star-rating">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="slider-controls">
+                <div class="slider-arrow" id="slide-prev"><i class="fas fa-arrow-left"></i></div>
+                <div class="slider-dots" id="slider-dots"></div>
+                <div class="slider-arrow" id="slide-next"><i class="fas fa-arrow-right"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" style="border-top: 1px solid var(--border-color);">
+        <div class="section-header">
+            <span class="section-tag">Industry Experts</span>
+            <h2 class="section-title">Meet Our <span>Team</span></h2>
+            <p class="section-desc">A highly specialized circle of creatives, engineers, and brand builders dedicated to your exponential scaling.</p>
+        </div>
+        
+        <div class="team-grid" style="grid-template-columns: repeat(6, 1fr);">
+            <!-- Arslan Munir -->
+            <div class="team-card">
+                <div class="team-img-box">
+                    <img src="./images/arslan sb.jpg" alt="Arslan Munir" onerror="this.src='https://placehold.co/400x500/172136/ffffff?text=Arslan+Munir'">
+                    <div class="team-social-overlay">
+                        <a href="#" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="team-info">
+                    <h3>Arslan Munir</h3>
+                    <span>Business Partner</span>
+                </div>
+            </div>
+
+            <!-- Asad Irfan -->
+            <div class="team-card">
+                <div class="team-img-box">
+                    <img src="./images/pexels-andrea-piacquadio-845434.jpg" alt="Asad Irfan" onerror="this.src='https://placehold.co/400x500/172136/ffffff?text=Asad+Irfan'">
+                    <div class="team-social-overlay">
+                        <a href="https://www.facebook.com/asad.irfan786/" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/in/asad-irfan-b2294232b/" target="_blank" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://metabizsolutions.github.io/asadirfan/" target="_blank" class="social-btn" title="Portfolio"><i class="fas fa-globe"></i></a>
+                        <a href="https://www.fiverr.com/asadirfan999" target="_blank" class="social-btn" title="Fiverr"><img src="./images/fiverr-icon.svg" alt="Fiverr" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';" style="width:16px;height:16px;"><i class="fas fa-briefcase" style="display:none; font-size:0.8rem;"></i></a>
+                        <a href="https://www.upwork.com/freelancers/~0180014878919c06c4" target="_blank" class="social-btn" title="Upwork"><img src="./images/upwork-icon.svg" alt="Upwork" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';" style="width:16px;height:16px;"><i class="fas fa-globe" style="display:none; font-size:0.8rem;"></i></a>
+                    </div>
+                </div>
+                <div class="team-info">
+                    <h3>Asad Irfan</h3>
+                    <span>CEO &amp; Founder</span>
+                </div>
+            </div>
+            
+            <!-- Haseeb -->
+            <div class="team-card">
+                <div class="team-img-box">
+                    <img src="./images/haseeb.jpg" alt="Muhammad Haseeb" onerror="this.src='https://placehold.co/400x500/172136/ffffff?text=M.+Haseeb'">
+                    <div class="team-social-overlay">
+                        <a href="https://www.facebook.com/profile.php?id=100078382171788&mibextid=ZbWKwL" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/in/muhammad-haseeb-63ab5532b/" target="_blank" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.fiverr.com/muhammadhase365" target="_blank" class="social-btn" title="Fiverr"><img src="./images/fiverr-icon.svg" alt="Fiverr" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';" style="width:16px;height:16px;"><i class="fas fa-briefcase" style="display:none; font-size:0.8rem;"></i></a>
+                        <a href="https://www.upwork.com/freelancers/~01787bee2d35372992?mp_source=share" target="_blank" class="social-btn" title="Upwork"><img src="./images/upwork-icon.svg" alt="Upwork" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';" style="width:16px;height:16px;"><i class="fas fa-globe" style="display:none; font-size:0.8rem;"></i></a>
+                    </div>
+                </div>
+                <div class="team-info">
+                    <h3>M. Haseeb</h3>
+                    <span>Senior Developer</span>
+                </div>
+            </div>
+            
+            <!-- Waseem -->
+            <div class="team-card">
+                <div class="team-img-box">
+                    <img src="./images/waseem.jpg" alt="Muhammad Waseem" onerror="this.src='https://placehold.co/400x500/172136/ffffff?text=M.+Waseem'">
+                    <div class="team-social-overlay">
+                        <a href="https://www.facebook.com/m.waseembhutta.723" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/in/waseem-bhutta-4884a2311?utm_source=share" target="_blank" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.fiverr.com/waseem0039/" target="_blank" class="social-btn" title="Fiverr"><img src="./images/fiverr-icon.svg" alt="Fiverr" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';" style="width:16px;height:16px;"><i class="fas fa-briefcase" style="display:none; font-size:0.8rem;"></i></a>
+                        <a href="https://www.upwork.com/freelancers/~0154a6eb38dae99282" target="_blank" class="social-btn" title="Upwork"><img src="./images/upwork-icon.svg" alt="Upwork" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';" style="width:16px;height:16px;"><i class="fas fa-globe" style="display:none; font-size:0.8rem;"></i></a>
+                    </div>
+                </div>
+                <div class="team-info">
+                    <h3>M. Waseem</h3>
+                    <span>Digital Marketer</span>
+                </div>
+            </div>
+            
+            <!-- Babar Ali -->
+            <div class="team-card">
+                <div class="team-img-box">
+                    <img src="./images/pexels-hussein-altameemi-2776353.png" alt="Babar Ali" onerror="this.src='https://placehold.co/400x500/172136/ffffff?text=Babar+Ali'">
+                    <div class="team-social-overlay">
+                        <a href="https://www.facebook.com/mbabar.ashraf?mibextid=ZbWKwL" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/in/babar-ali-085741330" target="_blank" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.fiverr.com/bablu560" target="_blank" class="social-btn" title="Fiverr"><img src="./images/fiverr-icon.svg" alt="Fiverr" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';" style="width:16px;height:16px;"><i class="fas fa-briefcase" style="display:none; font-size:0.8rem;"></i></a>
+                        <a href="https://www.upwork.com/freelancers/~0115c5754eb03c3d8d" target="_blank" class="social-btn" title="Upwork"><img src="./images/upwork-icon.svg" alt="Upwork" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';" style="width:16px;height:16px;"><i class="fas fa-globe" style="display:none; font-size:0.8rem;"></i></a>
+                    </div>
+                </div>
+                <div class="team-info">
+                    <h3>Babar Ali</h3>
+                    <span>Graphic Designer</span>
+                </div>
+            </div>
+            
+            <!-- Mudassir Afzal -->
+            <div class="team-card">
+                <div class="team-img-box">
+                    <img src="./images/pexels-andrea-piacquadio-745136.jpg" alt="Mudassir Afzal" onerror="this.src='https://placehold.co/400x500/172136/ffffff?text=M.+Afzal'">
+                    <div class="team-social-overlay">
+                        <a href="https://www.facebook.com/profile.php?id=100087445082812&mibextid=JRoKGi" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/in/mudassir-afzal-6792ba25a" target="_blank" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.fiverr.com/mudassir3810w" target="_blank" class="social-btn" title="Fiverr"><img src="./images/fiverr-icon.svg" alt="Fiverr" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';" style="width:16px;height:16px;"><i class="fas fa-briefcase" style="display:none; font-size:0.8rem;"></i></a>
+                        <a href="https://www.upwork.com/freelancers/~017cec45b03a0b95a1" target="_blank" class="social-btn" title="Upwork"><img src="./images/upwork-icon.svg" alt="Upwork" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';" style="width:16px;height:16px;"><i class="fas fa-globe" style="display:none; font-size:0.8rem;"></i></a>
+                    </div>
+                </div>
+                <div class="team-info">
+                    <h3>M. Afzal</h3>
+                    <span>Web Designer</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Accordion Section -->
+    <section id="faq" style="border-top: 1px solid var(--border-color);">
+        <div class="section-header">
+            <span class="section-tag">Got Questions?</span>
+            <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+            <p class="section-desc">Clear, helpful answers to common inquiries about working with MetaBiz Solutions.</p>
+        </div>
+        
+        <div class="faq-container">
+            <!-- FAQ 1 -->
+            <div class="faq-item">
+                <div class="faq-header">
+                    <h3>What services does MetaBiz offer?</h3>
+                    <div class="faq-icon"><i class="fas fa-plus"></i></div>
+                </div>
+                <div class="faq-body">
+                    <div class="faq-content">
+                        <p>At MetaBiz, we specialize in high-impact Web Development, premium CMS/WordPress/Shopify platforms, custom desktop software architectures built in Python and C#, and cohesive creative designs including brand identities and full UI/UX visuals.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ 2 -->
+            <div class="faq-item">
+                <div class="faq-header">
+                    <h3>How long does it take to complete a web development project?</h3>
+                    <div class="faq-icon"><i class="fas fa-plus"></i></div>
+                </div>
+                <div class="faq-body">
+                    <div class="faq-content">
+                        <p>Timeline depends heavily on scope. Standard optimized web pages take between 2 to 4 weeks, whereas custom software integrations or large-scale digital platforms can take 4 to 8 weeks. We always present a firm delivery timeline during our discovery call.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ 3 -->
+            <div class="faq-item">
+                <div class="faq-header">
+                    <h3>Do you offer ongoing support after project completion?</h3>
+                    <div class="faq-icon"><i class="fas fa-plus"></i></div>
+                </div>
+                <div class="faq-body">
+                    <div class="faq-content">
+                        <p>Absolutely. We prioritize long-term partnerships. MetaBiz provides comprehensive ongoing support, periodic version maintenance, visual refreshes, and security audits to keep your systems running at peak capability.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ 4 -->
+            <div class="faq-item">
+                <div class="faq-header">
+                    <h3>Can I request custom features for my web or software project?</h3>
+                    <div class="faq-icon"><i class="fas fa-plus"></i></div>
+                </div>
+                <div class="faq-body">
+                    <div class="faq-content">
+                        <p>Yes. Custom features are our core competency. We build tailormade business pipelines, automation systems, database structures, and distinct visual components built exactly around your specific operational processes.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ 5 -->
+            <div class="faq-item">
+                <div class="faq-header">
+                    <h3>When and how do I pay?</h3>
+                    <div class="faq-icon"><i class="fas fa-plus"></i></div>
+                </div>
+                <div class="faq-body">
+                    <div class="faq-content">
+                        <p>For all projects, a <strong>30-50% advance payment</strong> is required at the start to mobilize design and developer resources. The remaining amount is structured based on key project milestones or paid upon final successful delivery. We accept direct Bank Transfers, EasyPaisa, or JazzCash for your convenience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Map Section -->
+    <section id="contact" style="border-top: 1px solid var(--border-color);">
+        <div class="section-header">
+            <span class="section-tag">Let's Connect</span>
+            <h2 class="section-title">Get In <span>Touch</span></h2>
+            <p class="section-desc">We would love to discuss your project goals. Send us a message and receive a custom tactical solution outline.</p>
+        </div>
+        
+        <div class="contact-grid">
+            <!-- Contact Info Panel -->
+            <div class="contact-info-panel">
+                <div>
+                    <h3 style="font-size: 1.8rem; color: var(--text-main); margin-bottom: 16px;">Contact Information</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Have questions or want to kickstart your project immediately? Reach out through any of our channels.</p>
+                </div>
+                
+                <div class="contact-info-list">
+                    <div class="contact-info-item">
+                        <div class="contact-icon"><i class="fas fa-phone-volume"></i></div>
+                        <div class="contact-text">
+                            <h5>Direct Call</h5>
+                            <p>+92 322 6527520</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-icon"><i class="fas fa-envelope-open-text"></i></div>
+                        <div class="contact-text">
+                            <h5>Email Address</h5>
+                            <p>metabizsol@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-icon"><i class="fas fa-location-dot"></i></div>
+                        <div class="contact-text">
+                            <h5>Headquarters</h5>
+                            <p>Muzaffargarh, Punjab, Pakistan</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-socials">
+                    <h4>Connect on Social Networks</h4>
+                    <div class="contact-socials-grid">
+                        <a href="https://www.facebook.com/profile.php?id=61566539397691" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/923226527520" target="_blank" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact WhatsApp Panel -->
+            <div class="contact-form-panel">
+                <div class="contact-form" style="text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 28px; height: 100%;">
+                    <div style="width: 72px; height: 72px; border-radius: 50%; background: rgba(0, 122, 255, 0.06); border: 2px solid var(--primary); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 2.2rem; margin-bottom: 8px; animation: pulse-ring-whatsapp 2s infinite;">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.8rem; color: var(--text-main); margin-bottom: 12px;">Direct WhatsApp Consultation</h3>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; max-width: 440px; margin: 0 auto;">Skip long form-filling! Chat directly with our CEO and Senior Developers on WhatsApp for an instant project feasibility review and custom pricing quote.</p>
+                    </div>
+                    
+                    <a href="https://wa.me/923226527520?text=Hello%20MetaBiz,%20I%20am%20interested%20in%20a%20digital%20consultation%20for%20my%20business!" target="_blank" class="btn-premium btn-primary" style="width: 100%; padding: 18px; text-decoration: none; display: inline-flex; gap: 10px; font-size: 1.05rem; justify-content: center; align-items: center;">
+                        <i class="fab fa-whatsapp" style="font-size: 1.4rem;"></i> Start Live Consultation
+                    </a>
+                    
+                    <div style="border-top: 1px solid var(--border-color); padding-top: 20px; width: 100%;">
+                        <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); display: block; margin-bottom: 12px;">Consult Specifically For:</span>
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;">
+                            <a href="https://wa.me/923226527520?text=Hello%20MetaBiz,%20I%20would%20like%20to%20consult%20about%20a%20Restaurant%20or%20Retail%20POS%20system!" target="_blank" class="portfolio-tag" style="text-decoration: none; transition: var(--transition-smooth); cursor: pointer;"><i class="fas fa-cash-register"></i> POS Systems</a>
+                            <a href="https://wa.me/923226527520?text=Hello%20MetaBiz,%20I%20would%20like%20to%20consult%20about%20a%20Mobile%20App%20project!" target="_blank" class="portfolio-tag" style="text-decoration: none; transition: var(--transition-smooth); cursor: pointer;"><i class="fas fa-mobile-screen-button"></i> Mobile Apps</a>
+                            <a href="https://wa.me/923226527520?text=Hello%20MetaBiz,%20I%20would%20like%20to%20consult%20about%20a%20WordPress%20or%20Shopify%20website!" target="_blank" class="portfolio-tag" style="text-decoration: none; transition: var(--transition-smooth); cursor: pointer;"><i class="fab fa-wordpress"></i> CMS Sites</a>
+                            <a href="https://wa.me/923226527520?text=Hello%20MetaBiz,%20I%20would%20like%20to%20consult%20about%20custom%20software%20solutions!" target="_blank" class="portfolio-tag" style="text-decoration: none; transition: var(--transition-smooth); cursor: pointer;"><i class="fas fa-gears"></i> Custom Software</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Interactive Custom Styled Map -->
+        <div class="map-section">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d104919.41213288592!2d71.1471983!3d30.0715393!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x393ad7ff9924fa15%3A0x1d3c394f0b111a2a!2sMuzaffargarh%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1696679358145!5m2!1sen!2s" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <img src="./images/image.png" alt="MetaBiz Logo" onerror="this.src='https://placehold.co/100x100/26110a/ff5e36?text=MB'">
+                    <span class="logo-text">MetaBiz</span>
+                </a>
+                <p>We combine design brilliance, robust coding architectures, and digital scaling blueprints to forge market leaders.</p>
+                <div class="contact-socials-grid">
+                    <a href="https://www.facebook.com/profile.php?id=61566539397691" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/923226527520" target="_blank" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="#"><i class="fas fa-chevron-right" style="font-size: 0.75rem;"></i> Home</a></li>
+                    <li><a href="#about"><i class="fas fa-chevron-right" style="font-size: 0.75rem;"></i> About us</a></li>
+                    <li><a href="#services"><i class="fas fa-chevron-right" style="font-size: 0.75rem;"></i> Our services</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Useful Links</h4>
+                <ul>
+                    <li><a href="#team"><i class="fas fa-chevron-right" style="font-size: 0.75rem;"></i> Team</a></li>
+                    <li><a href="#contact"><i class="fas fa-chevron-right" style="font-size: 0.75rem;"></i> Contact</a></li>
+                    <li><a href="#faq"><i class="fas fa-chevron-right" style="font-size: 0.75rem;"></i> FAQ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact-info">
+                <h4 style="color: var(--text-main); font-family: var(--font-display); font-size:1.1rem; margin-bottom:24px;">Get In Touch</h4>
+                <div class="footer-contact-item">
+                    <i class="fas fa-location-dot"></i>
+                    <p>Muzaffargarh, Punjab, Pakistan</p>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-phone"></i>
+                    <p>+92 322 6527520</p>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <p>metabizsol@gmail.com</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>Copyright &copy; 2026 MetaBiz Solution. All Rights Reserved.</p>
+            <p>Designed for Ultimate Visual Distinction.</p>
+        </div>
+    </footer>
+
+    <!-- Floating Interactive WhatsApp Widget -->
+    <a href="https://wa.me/923226527520" class="whatsapp-floating" target="_blank" aria-label="Chat with MetaBiz on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Success Feedback Overlay Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="success-modal">
+            <div class="modal-icon"><i class="fas fa-check"></i></div>
+            <h3>Message Transmitted!</h3>
+            <p>Your message was captured successfully. The MetaBiz strategic solution team will review your project details and get back to you within 12 hours.</p>
+            <button class="btn-premium btn-primary" id="closeModalBtn" style="padding: 12px 30px;">Perfect</button>
+        </div>
+    </div>
+
+    <!-- Interactive Scripts -->
+    <script>
+        /* ==========================================
+           1. RESPONSIVE MOBILE NAVIGATION TOGGLE
+           ========================================== */
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                // Toggle between hamburger and close icon
+                const icon = navToggle.querySelector('i');
+                if (navMenu.classList.contains('active')) {
+                    icon.className = 'fas fa-xmark';
+                } else {
+                    icon.className = 'fas fa-bars';
+                }
+            });
+        }
+
+        // Close Mobile Menu on Nav Item Click
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                const icon = navToggle.querySelector('i');
+                if (icon) icon.className = 'fas fa-bars';
+            });
+        });
+
+        /* ==========================================
+           2. HEADER GLOW SCROLL TRANSITION
+           ========================================== */
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        /* ==========================================
+           3. PORTFOLIO FILTER LOGIC
+           ========================================== */
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioCards = document.querySelectorAll('.portfolio-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filterValue = button.getAttribute('data-filter');
+
+                portfolioCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'flex';
+                        card.style.opacity = '0';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                        }, 50);
+                    } else {
+                        card.style.transform = 'scale(0.95)';
+                        card.style.opacity = '0';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        /* ==========================================
+           4. VISUAL COUNTERS ANIMATION (INTERSECTION OBSERVER)
+           ========================================== */
+        const counterNumbers = document.querySelectorAll('.counter-number');
+        const countSpeed = 200; // Lower numbers are faster
+
+        const triggerCounters = (elements) => {
+            elements.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'), 10);
+                const count = parseInt(counter.innerText, 10);
+                
+                // Set increment factor
+                const increment = Math.ceil(target / countSpeed);
+
+                const updateCount = () => {
+                    const current = parseInt(counter.innerText, 10);
+                    if (current < target) {
+                        counter.innerText = Math.min(current + increment, target);
+                        setTimeout(updateCount, 1);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                
+                updateCount();
+            });
+        };
+
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counterNumbersInView = entry.target.querySelectorAll('.counter-number');
+                    triggerCounters(counterNumbersInView);
+                    observer.unobserve(entry.target); // Run only once
+                }
+            });
+        }, { threshold: 0.3 });
+
+        const countersSection = document.querySelector('.counters');
+        if (countersSection) {
+            counterObserver.observe(countersSection);
+        }
+
+        /* ==========================================
+           5. TESTIMONIALS SLIDER / CAROUSEL
+           ========================================== */
+        const track = document.getElementById('testimonial-track');
+        const slides = Array.from(track ? track.children : []);
+        const prevBtn = document.getElementById('slide-prev');
+        const nextBtn = document.getElementById('slide-next');
+        const dotsContainer = document.getElementById('slider-dots');
+        
+        let currentSlideIndex = 0;
+
+        if (track && slides.length > 0) {
+            // Generate dots
+            slides.forEach((_, idx) => {
+                const dot = document.createElement('div');
+                dot.className = `slider-dot ${idx === 0 ? 'active' : ''}`;
+                dot.addEventListener('click', () => moveToSlide(idx));
+                dotsContainer.appendChild(dot);
+            });
+
+            const dots = Array.from(dotsContainer.children);
+
+            const moveToSlide = (index) => {
+                track.style.transform = `translateX(-${index * 100}%)`;
+                dots[currentSlideIndex].classList.remove('active');
+                dots[index].classList.add('active');
+                currentSlideIndex = index;
+            };
+
+            nextBtn.addEventListener('click', () => {
+                let nextIndex = currentSlideIndex + 1;
+                if (nextIndex >= slides.length) nextIndex = 0;
+                moveToSlide(nextIndex);
+            });
+
+            prevBtn.addEventListener('click', () => {
+                let prevIndex = currentSlideIndex - 1;
+                if (prevIndex < 0) prevIndex = slides.length - 1;
+                moveToSlide(prevIndex);
+            });
+
+            // Auto Play testimonials every 6 seconds
+            setInterval(() => {
+                let nextIndex = currentSlideIndex + 1;
+                if (nextIndex >= slides.length) nextIndex = 0;
+                moveToSlide(nextIndex);
+            }, 6000);
+        }
+
+        /* ==========================================
+           6. FAQ ACCORDION INTERACTIVITY
+           ========================================== */
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const header = item.querySelector('.faq-header');
+            const body = item.querySelector('.faq-body');
+
+            header.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                // Close all open FAQs
+                faqItems.forEach(el => {
+                    el.classList.remove('active');
+                    el.querySelector('.faq-body').style.maxHeight = '0';
+                });
+
+                if (!isActive) {
+                    item.classList.add('active');
+                    body.style.maxHeight = body.scrollHeight + 'px';
+                }
+            });
+        });
+
+        /* ==========================================
+           7. INTERACTIVE CONTACT FORM & MODAL
+           ========================================== */
+        const contactForm = document.getElementById('contactForm');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault(); // Prevent standard page reload
+                
+                // Show stunning custom success modal
+                modalOverlay.classList.add('active');
+                
+                // Reset form inputs
+                contactForm.reset();
+            });
+        }
+
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', () => {
+                modalOverlay.classList.remove('active');
+            });
+        }
+
+        // Close modal when clicking on the overlay background
+        if (modalOverlay) {
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) {
+                    modalOverlay.classList.remove('active');
+                }
+            });
+        }
+
+        /* ==========================================
+           8. ACTIVE NAV ITEM BY SCROLL DETECTION
+           ========================================== */
+        const sections = document.querySelectorAll('section[id], header');
+        const navItems = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.scrollY >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                const href = item.getAttribute('href');
+                if (href === '#' + current || (current === 'home' && href === '#')) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
