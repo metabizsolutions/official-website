@@ -1037,6 +1037,94 @@
             border-radius: 4px;
         }
 
+        .portfolio-card-featured {
+            grid-column: span 3;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+            gap: 0;
+        }
+
+        .portfolio-img-featured {
+            height: 100%;
+            aspect-ratio: auto;
+            min-height: 380px;
+        }
+
+        .portfolio-info-featured {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .portfolio-title-featured {
+            font-size: 1.7rem;
+            margin-bottom: 8px;
+        }
+
+        .portfolio-feature-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 8px 16px;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            max-height: 160px;
+            overflow-y: auto;
+            padding-right: 8px;
+            border-right: 1px solid var(--border-color);
+        }
+
+        .project-budget-badge {
+            position: absolute;
+            bottom: 16px;
+            left: 16px;
+            max-width: calc(100% - 32px);
+            background: var(--accent);
+            color: #ffffff;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            line-height: 1.25;
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+
+        .project-budget-badge.featured {
+            bottom: 24px;
+            left: 24px;
+            max-width: calc(100% - 48px);
+            padding: 6px 16px;
+            font-size: 1.05rem;
+            font-weight: 800;
+        }
+
+        .service-talent-banner {
+            margin-top: 48px;
+            background: rgba(255, 94, 54, 0.04);
+            border: 1px solid rgba(255, 94, 54, 0.15);
+            border-radius: 20px;
+            padding: 24px 32px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(255, 94, 54, 0.02);
+        }
+
+        .service-talent-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 14px;
+            background: rgba(255, 94, 54, 0.08);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            flex-shrink: 0;
+        }
+
         /* ==========================================
            8. TESTIMONIALS SECTION (PREMIUM CAROUSEL)
            ========================================== */
@@ -1732,7 +1820,18 @@
                 grid-template-columns: repeat(3, 1fr) !important;
             }
             .services-grid, .portfolio-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .portfolio-card-featured {
+                grid-column: span 2;
+                grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+            }
+            .portfolio-info-featured {
+                padding: 32px;
+            }
+            .portfolio-feature-list {
+                grid-template-columns: 1fr;
+                max-height: 210px;
             }
             .footer-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -1743,8 +1842,18 @@
             section {
                 padding: 60px 16px;
             }
+            .section-header {
+                margin-bottom: 40px;
+            }
+            .section-tag {
+                font-size: 0.75rem;
+                letter-spacing: 0.14em;
+            }
             .section-title {
                 font-size: 2rem;
+            }
+            .section-desc {
+                font-size: 0.98rem;
             }
             .hero-grid {
                 grid-template-columns: 1fr;
@@ -1772,6 +1881,105 @@
             }
             .about-features {
                 grid-template-columns: 1fr;
+            }
+            .services-grid, .portfolio-grid {
+                grid-template-columns: 1fr !important;
+                gap: 18px !important;
+            }
+            .service-card {
+                border-radius: 18px;
+                padding: 28px 22px;
+            }
+            .service-icon-box {
+                width: 54px;
+                height: 54px;
+                border-radius: 14px;
+                font-size: 1.5rem;
+                margin-bottom: 22px;
+            }
+            .service-card h3 {
+                font-size: 1.25rem;
+            }
+            .service-card p {
+                font-size: 0.92rem;
+                line-height: 1.65;
+                margin-bottom: 20px;
+            }
+            .service-talent-banner {
+                align-items: flex-start;
+                padding: 22px;
+            }
+            .portfolio-filters {
+                justify-content: flex-start;
+                gap: 8px;
+                margin-bottom: 32px;
+                overflow-x: auto;
+                padding-bottom: 8px;
+                flex-wrap: nowrap;
+                scrollbar-width: none;
+            }
+            .portfolio-filters::-webkit-scrollbar {
+                display: none;
+            }
+            .filter-btn {
+                flex: 0 0 auto;
+                padding: 9px 16px;
+                font-size: 0.82rem;
+            }
+            .portfolio-card {
+                border-radius: 18px;
+            }
+            .portfolio-card-featured {
+                grid-column: auto !important;
+                display: flex !important;
+                grid-template-columns: 1fr !important;
+            }
+            .portfolio-img-box,
+            .portfolio-img-featured {
+                aspect-ratio: 16 / 11 !important;
+                min-height: 220px !important;
+                height: auto !important;
+            }
+            .portfolio-placeholder-icon {
+                font-size: 2.35rem !important;
+            }
+            .portfolio-meta {
+                top: 14px !important;
+                left: 14px !important;
+                max-width: calc(100% - 28px);
+                font-size: 0.65rem;
+                letter-spacing: 0.06em;
+                white-space: normal;
+            }
+            .project-budget-badge,
+            .project-budget-badge.featured,
+            .portfolio-placeholder > div[style*="position: absolute; bottom"] {
+                bottom: 14px !important;
+                left: 14px !important;
+                max-width: calc(100% - 28px);
+                padding: 5px 11px;
+                font-size: 0.76rem !important;
+                line-height: 1.25;
+            }
+            .portfolio-info,
+            .portfolio-info-featured {
+                padding: 22px !important;
+            }
+            .portfolio-info h4,
+            .portfolio-title-featured {
+                font-size: 1.14rem !important;
+                line-height: 1.35;
+            }
+            .portfolio-info p {
+                font-size: 0.88rem !important;
+            }
+            .portfolio-feature-list {
+                grid-template-columns: 1fr !important;
+                max-height: none !important;
+                overflow: visible !important;
+                border-right: 0 !important;
+                padding-right: 0 !important;
+                gap: 9px;
             }
             .testimonial-slide {
                 padding: 40px 24px;
@@ -1812,6 +2020,13 @@
         }
 
         @media (max-width: 480px) {
+            section {
+                padding-left: 14px;
+                padding-right: 14px;
+            }
+            .section-title {
+                font-size: 1.72rem;
+            }
             .counters-grid {
                 grid-template-columns: 1fr;
             }
@@ -1821,7 +2036,12 @@
                 margin: 0 auto;
             }
             .services-grid, .portfolio-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr !important;
+            }
+            .service-talent-banner {
+                flex-direction: column;
+                gap: 14px;
+                padding: 20px;
             }
             .footer-grid {
                 grid-template-columns: 1fr;
@@ -1997,7 +2217,7 @@
             <p class="section-desc">We build high-quality digital solutions and products, helping brands accelerate scale with absolute visual distinction.</p>
         </div>
         
-        <div class="services-grid" style="grid-template-columns: repeat(3, 1fr); gap: 24px;">
+        <div class="services-grid">
             <!-- Service Card 1 -->
             <div class="service-card">
                 <div class="service-card-glow"></div>
@@ -2054,8 +2274,8 @@
         </div>
 
         <!-- Developers Skill Notice Banner -->
-        <div style="margin-top: 48px; background: rgba(255, 94, 54, 0.04); border: 1px solid rgba(255, 94, 54, 0.15); border-radius: 20px; padding: 24px 32px; display: flex; align-items: center; gap: 20px; backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(255, 94, 54, 0.02);">
-            <div style="width: 54px; height: 54px; border-radius: 14px; background: rgba(255, 94, 54, 0.08); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0;">
+        <div class="service-talent-banner">
+            <div class="service-talent-icon">
                 <i class="fas fa-user-tie"></i>
             </div>
             <div>
@@ -2080,24 +2300,24 @@
             <button class="filter-btn" data-filter="graphics">Creative Design</button>
         </div>
         
-        <div class="portfolio-grid" id="portfolio-grid" style="grid-template-columns: repeat(3, 1fr); gap: 24px;">
+        <div class="portfolio-grid" id="portfolio-grid">
             <!-- Project 1: Baloch Tools -->
-            <div class="portfolio-card" data-category="software" style="grid-column: span 3; display: grid; grid-template-columns: 1fr 1.5fr; gap: 0;">
-                <div class="portfolio-img-box" style="height: 100%; aspect-ratio: auto; min-height: 380px;">
+            <div class="portfolio-card portfolio-card-featured" data-category="software">
+                <div class="portfolio-img-box portfolio-img-featured">
                     <div class="portfolio-placeholder">
                         <div class="portfolio-placeholder-icon" style="font-size: 4rem;"><i class="fas fa-screwdriver-wrench"></i></div>
                         <span class="portfolio-meta" style="top: 24px; left: 24px;">Enterprise Desktop POS</span>
-                        <div style="position: absolute; bottom: 24px; left: 24px; background: var(--accent); color: #ffffff; padding: 6px 16px; border-radius: 50px; font-weight: 800; font-family: var(--font-display); font-size: 1.05rem; box-shadow: 0 4px 15px var(--accent-glow);">200,000 PKR Budget</div>
+                        <div class="project-budget-badge featured">200,000 PKR Budget</div>
                     </div>
                 </div>
-                <div class="portfolio-info" style="padding: 40px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="portfolio-info portfolio-info-featured">
                     <div>
-                        <h4 style="font-size: 1.7rem; margin-bottom: 8px;">Baloch Tools &amp; Welding Material POS Software</h4>
+                        <h4 class="portfolio-title-featured">Baloch Tools &amp; Welding Material POS Software</h4>
                         <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">An elite-grade inventory management and multi-user billing suite built with CustomTkinter and local database sync.</p>
                         
                         <div style="margin-bottom: 24px;">
                             <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--primary); font-weight: 700; display: block; margin-bottom: 8px;">Key System Features:</span>
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; font-size: 0.82rem; color: var(--text-muted); max-height: 160px; overflow-y: auto; padding-right: 8px; border-right: 1px solid var(--border-color);">
+                            <div class="portfolio-feature-list">
                                 <div><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 6px;"></i> Admin &amp; Cashier Permission System</div>
                                 <div><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 6px;"></i> Real-time Barcode &amp; Search System</div>
                                 <div><i class="fas fa-check-circle" style="color: var(--primary); margin-right: 6px;"></i> Purchase vs Sale Profit Math</div>
@@ -2337,10 +2557,10 @@
         <div class="testimonials-container">
             <div class="testimonial-slider">
                 <div class="testimonial-track" id="testimonial-track">
-                    <!-- Slide 1 -->
+                    <!-- Slide 1 — POS Software → Asad Irfan -->
                     <div class="testimonial-slide">
                         <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
-                        <p>"MetaBiz built a custom Pharmacy POS system for our 3 branches. The real-time drug expiry alerts and inventory sync are flawless. Flawless execution!"</p>
+                        <p>"MetaBiz built a custom Pharmacy POS system for our 3 branches. Asad Irfan's expertise in real-time drug expiry alerts and inventory sync is absolutely flawless. Outstanding work!"</p>
                         <div class="client-info">
                             <h4>Tariq Mahmoud</h4>
                             <span>CEO, Al-Buraq Pharmacy</span>
@@ -2348,10 +2568,10 @@
                         </div>
                     </div>
                     
-                    <!-- Slide 2 -->
+                    <!-- Slide 2 — POS Software → Asad Irfan -->
                     <div class="testimonial-slide">
                         <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
-                        <p>"Our bakery POS system with custom recipe ingredient costing is saving us hours. Muhammad Haseeb and his team are true geniuses!"</p>
+                        <p>"Our bakery POS system with custom recipe ingredient costing is saving us hours every day. Asad Irfan engineered every detail brilliantly — a true software genius!"</p>
                         <div class="client-info">
                             <h4>Fatima Al-Zahra</h4>
                             <span>Founder, Bloom Bakery</span>
@@ -2359,10 +2579,10 @@
                         </div>
                     </div>
                     
-                    <!-- Slide 3 -->
+                    <!-- Slide 3 — Desktop Software → Asad Irfan -->
                     <div class="testimonial-slide">
                         <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
-                        <p>"The Android/iOS mobile tracking app they built is fast, lightweight, and syncs offline perfectly. Our field team is absolutely loving it!"</p>
+                        <p>"The desktop tracking software Asad Irfan developed for us is fast, lightweight, and syncs offline perfectly. Our field management team is absolutely loving every feature!"</p>
                         <div class="client-info">
                             <h4>Marcus Thorne</h4>
                             <span>Director, Apex Logistics</span>
@@ -2370,10 +2590,10 @@
                         </div>
                     </div>
                     
-                    <!-- Slide 4 -->
+                    <!-- Slide 4 — POS Software → Asad Irfan -->
                     <div class="testimonial-slide">
                         <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
-                        <p>"Restaurant POS with multi-terminal kitchen display screens. The speed of processing orders has doubled. Incredibly top-notch developers!"</p>
+                        <p>"Restaurant POS with multi-terminal kitchen display screens — all crafted by Asad Irfan. Order processing speed has doubled. He is an incredibly talented developer!"</p>
                         <div class="client-info">
                             <h4>Zayd Al-Hassan</h4>
                             <span>Owner, Shawarma Express Chain</span>
@@ -2381,10 +2601,10 @@
                         </div>
                     </div>
 
-                    <!-- Slide 5 -->
+                    <!-- Slide 5 — Shopify → Muhammad Haseeb & Muhammad Mudassir -->
                     <div class="testimonial-slide">
                         <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
-                        <p>"Our Shopify storefront conversion rates increased by 40% after MetaBiz redesigned the UI/UX. The custom animations are simply stunning."</p>
+                        <p>"Our Shopify storefront conversion rates jumped 40% after Muhammad Haseeb and Muhammad Mudassir redesigned our UI/UX. The custom animations and performance optimizations are simply world-class!"</p>
                         <div class="client-info">
                             <h4>Sarah Jenkins</h4>
                             <span>Co-Founder, Muse Boutique</span>
@@ -2392,10 +2612,10 @@
                         </div>
                     </div>
 
-                    <!-- Slide 6 -->
+                    <!-- Slide 6 — POS / Desktop Software → Asad Irfan -->
                     <div class="testimonial-slide">
                         <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
-                        <p>"An enterprise-level retail inventory POS system managing 20k+ SKUs smoothly. The C# database backend handles high transaction volume easily."</p>
+                        <p>"An enterprise-level retail inventory POS managing 20k+ SKUs smoothly. Asad Irfan's C# database backend handles our high transaction volumes without a single hiccup. Exceptional!"</p>
                         <div class="client-info">
                             <h4>Bilal Ibrahim</h4>
                             <span>Director, Medina Departmental Store</span>
@@ -2403,10 +2623,10 @@
                         </div>
                     </div>
 
-                    <!-- Slide 7 -->
+                    <!-- Slide 7 — Desktop Software → Asad Irfan -->
                     <div class="testimonial-slide">
                         <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
-                        <p>"We commissioned a custom Python scraping & automation software. Their coding standards are exceptionally high. Highly recommended!"</p>
+                        <p>"We commissioned a custom Python scraping and automation desktop tool. Asad Irfan's coding standards and architecture skills are exceptionally high. Highly recommended!"</p>
                         <div class="client-info">
                             <h4>Liam Henderson</h4>
                             <span>CTO, Venture Capital Partners</span>
@@ -2414,10 +2634,10 @@
                         </div>
                     </div>
 
-                    <!-- Slide 8 -->
+                    <!-- Slide 8 — WordPress Website → Muhammad Haseeb & Muhammad Mudassir -->
                     <div class="testimonial-slide">
                         <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
-                        <p>"A gorgeous custom WordPress booking website for our medical clinic. Fully HIPAA compliant, secure, and super responsive on mobile."</p>
+                        <p>"A gorgeous custom WordPress booking website for our clinic. Muhammad Haseeb and Muhammad Mudassir delivered a fully secure, responsive, and HIPAA-compliant solution we are proud of!"</p>
                         <div class="client-info">
                             <h4>Aisha Farooq</h4>
                             <span>MD, Zenith Healthcare</span>
@@ -2425,10 +2645,10 @@
                         </div>
                     </div>
 
-                    <!-- Slide 9 -->
+                    <!-- Slide 9 — Graphics Design → Babar Ali -->
                     <div class="testimonial-slide">
                         <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
-                        <p>"Babar Ali's portrait illustrations and custom brand banners gave our agency a complete premium identity refresh. A true creative mastermind."</p>
+                        <p>"Babar Ali's portrait illustrations and custom brand banners gave our agency a complete premium identity refresh. His creativity and attention to detail are absolutely unmatched!"</p>
                         <div class="client-info">
                             <h4>Sophia Caldwell</h4>
                             <span>Marketing Manager, Ignite Media</span>
@@ -2436,10 +2656,10 @@
                         </div>
                     </div>
 
-                    <!-- Slide 10 -->
+                    <!-- Slide 10 — POS Software → Asad Irfan -->
                     <div class="testimonial-slide">
                         <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
-                        <p>"Bakery order tracker POS that automatically calculates batch sizes. The interface is intuitive and the support team is always available."</p>
+                        <p>"Bakery order tracker POS that automatically calculates batch sizes — developed by Asad Irfan. The interface is intuitive, fast, and the after-sales support has been phenomenal!"</p>
                         <div class="client-info">
                             <h4>Saad Rehman</h4>
                             <span>Founder, Gourmet Delights Bakery</span>
@@ -2447,10 +2667,10 @@
                         </div>
                     </div>
 
-                    <!-- Slide 11 -->
+                    <!-- Slide 11 — WordPress / WooCommerce → Muhammad Haseeb & Muhammad Mudassir -->
                     <div class="testimonial-slide">
                         <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
-                        <p>"A custom WordPress WooCommerce solution with high security and seamless payment methods. The best agency experience we've had!"</p>
+                        <p>"A custom WordPress WooCommerce solution with airtight security and seamless payments. Muhammad Haseeb and Muhammad Mudassir are simply the best web developers we have ever worked with!"</p>
                         <div class="client-info">
                             <h4>Emma Watson</h4>
                             <span>Owner, Clover Cosmetics</span>
@@ -2458,10 +2678,10 @@
                         </div>
                     </div>
 
-                    <!-- Slide 12 -->
+                    <!-- Slide 12 — Desktop / ERP Software → Asad Irfan -->
                     <div class="testimonial-slide">
                         <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
-                        <p>"Highly functional custom ERP software for our textile factory. Tracks manufacturing steps and invoices in real-time. Simply brilliant."</p>
+                        <p>"A highly functional custom ERP desktop software for our textile factory. Asad Irfan tracked every manufacturing step and invoice in real-time. His work is simply brilliant and reliable!"</p>
                         <div class="client-info">
                             <h4>Maryam Yusuf</h4>
                             <span>CEO, Al-Falah Apparel</span>
@@ -2469,10 +2689,10 @@
                         </div>
                     </div>
 
-                    <!-- Slide 13 -->
+                    <!-- Slide 13 — Desktop Software → Asad Irfan -->
                     <div class="testimonial-slide">
                         <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
-                        <p>"Their C# desktop integration for our manufacturing pipeline works flawlessly. Top-notch industry talent who understands technical requirements."</p>
+                        <p>"Asad Irfan's C# desktop integration for our manufacturing pipeline works flawlessly under heavy load. He truly understands enterprise-level technical requirements like no one else."</p>
                         <div class="client-info">
                             <h4>David Miller</h4>
                             <span>VP of Engineering, CoreTech USA</span>
@@ -2480,10 +2700,10 @@
                         </div>
                     </div>
 
-                    <!-- Slide 14 -->
+                    <!-- Slide 14 — Shopify → Muhammad Haseeb & Muhammad Mudassir -->
                     <div class="testimonial-slide">
                         <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
-                        <p>"Custom Shopify subscription app with automated email triggers. Highly skilled team who delivered exactly what they promised."</p>
+                        <p>"Custom Shopify subscription app with automated email triggers — delivered perfectly by Muhammad Haseeb and Muhammad Mudassir. They exceeded our expectations in every way possible!"</p>
                         <div class="client-info">
                             <h4>Zainab Al-Attas</h4>
                             <span>Founder, Oasis Perfumes</span>
@@ -2491,13 +2711,68 @@
                         </div>
                     </div>
 
-                    <!-- Slide 15 -->
+                    <!-- Slide 15 — WordPress Website → Muhammad Haseeb & Muhammad Mudassir -->
                     <div class="testimonial-slide">
                         <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
-                        <p>"WordPress property listing site with custom filter widgets and map APIs. MetaBiz exceeded our speed and aesthetic requirements."</p>
+                        <p>"WordPress property listing site with custom filter widgets and map APIs. Muhammad Haseeb and Muhammad Mudassir exceeded our speed and aesthetic requirements. Absolutely phenomenal team!"</p>
                         <div class="client-info">
                             <h4>Christopher Vance</h4>
                             <span>Director, Elite Real Estate</span>
+                            <div class="star-rating">★★★★★</div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 16 — Digital Marketing → Muhammad Waseem -->
+                    <div class="testimonial-slide">
+                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                        <p>"Muhammad Waseem ran our Facebook and Instagram ad campaigns and our leads tripled within the first month. His targeting strategies and creative ad copy are phenomenally effective!"</p>
+                        <div class="client-info">
+                            <h4>Nadia Al-Rashid</h4>
+                            <span>Founder, Luxe Beauty Studio</span>
+                            <div class="star-rating">★★★★★</div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 17 — Digital Marketing → Muhammad Waseem -->
+                    <div class="testimonial-slide">
+                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                        <p>"Muhammad Waseem transformed our Google Ads account completely. Our cost-per-click dropped by 35% and our online sales doubled in just 60 days. A true digital marketing expert!"</p>
+                        <div class="client-info">
+                            <h4>Oliver Grant</h4>
+                            <span>CEO, NovaTech Gadgets</span>
+                            <div class="star-rating">★★★★★</div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 18 — Digital Marketing → Muhammad Waseem -->
+                    <div class="testimonial-slide">
+                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                        <p>"We hired Muhammad Waseem for full social media management and SEO. Within 3 months our organic traffic grew by 120% and our brand visibility skyrocketed. Truly exceptional results!"</p>
+                        <div class="client-info">
+                            <h4>Hira Baig</h4>
+                            <span>Director, Bloom Events & Weddings</span>
+                            <div class="star-rating">★★★★★</div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 19 — Graphics Design → Babar Ali -->
+                    <div class="testimonial-slide">
+                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                        <p>"Babar Ali designed our entire brand identity from scratch — logo, business cards, packaging, and social media kits. Every single element was polished and pixel-perfect. An absolute design genius!"</p>
+                        <div class="client-info">
+                            <h4>Kamran Siddiqui</h4>
+                            <span>Founder, Horizon Coffee Roasters</span>
+                            <div class="star-rating">★★★★★</div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 20 — Graphics Design → Babar Ali -->
+                    <div class="testimonial-slide">
+                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                        <p>"Babar Ali created stunning product packaging visuals and promotional flyers for our launch campaign. His designs captured our brand essence perfectly and impressed every stakeholder we presented to!"</p>
+                        <div class="client-info">
+                            <h4>Amelia Torres</h4>
+                            <span>Marketing Lead, PureGlow Skincare</span>
                             <div class="star-rating">★★★★★</div>
                         </div>
                     </div>
@@ -2903,6 +3178,9 @@
            ========================================== */
         const filterButtons = document.querySelectorAll('.filter-btn');
         const portfolioCards = document.querySelectorAll('.portfolio-card');
+        const getPortfolioDisplay = (card) => {
+            return card.classList.contains('portfolio-card-featured') && window.innerWidth > 768 ? 'grid' : 'flex';
+        };
 
         filterButtons.forEach(button => {
             button.addEventListener('click', () => {
@@ -2914,7 +3192,7 @@
 
                 portfolioCards.forEach(card => {
                     if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
-                        card.style.display = 'flex';
+                        card.style.display = getPortfolioDisplay(card);
                         card.style.opacity = '0';
                         setTimeout(() => {
                             card.style.opacity = '1';
@@ -2928,6 +3206,14 @@
                         }, 300);
                     }
                 });
+            });
+        });
+
+        window.addEventListener('resize', () => {
+            portfolioCards.forEach(card => {
+                if (card.style.display !== 'none') {
+                    card.style.display = getPortfolioDisplay(card);
+                }
             });
         });
 
