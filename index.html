@@ -112,7 +112,7 @@
     }
 
     /* ==========================================================================
-       2. 3D WEBGL & 2D LIQUID AURORA SILK CANVASES
+       2. 3D WEBGL & 2D COMET TAIL CANVASES
        ========================================================================== */
     #webgl-canvas {
       position: fixed;
@@ -124,17 +124,17 @@
       pointer-events: none;
     }
 
-    #aurora-fx-canvas {
+    #comet-fx-canvas {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      z-index: 9000;
+      z-index: 99998;
       pointer-events: none;
     }
 
-    /* Ambient Aurora Mesh Blobs for Ultra-Polished Depth */
+    /* Ambient Aurora Mesh Blobs */
     .ambient-aurora {
       position: fixed;
       inset: 0;
@@ -220,7 +220,7 @@
     }
 
     /* ==========================================================================
-       3. CUSTOM MAGNETIC STUDIO CURSOR (DESKTOP ONLY)
+       3. CUSTOM GLOWING COMET HEAD CURSOR (DESKTOP)
        ========================================================================== */
     #cursor-wrapper {
       position: fixed;
@@ -236,73 +236,62 @@
       }
     }
 
-    .cursor-dot {
+    .comet-head-node {
       position: fixed;
       top: 0;
       left: 0;
-      width: 8px;
-      height: 8px;
-      background: var(--primary);
-      border-radius: 50%;
+      width: 28px;
+      height: 28px;
       transform: translate(-50%, -50%);
-      box-shadow: 0 0 14px var(--primary);
       z-index: 100000;
-    }
-
-    .cursor-halo {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 42px;
-      height: 42px;
-      border: 1.5px solid var(--primary);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      transition: width 0.3s var(--ease-out-expo),
-                  height 0.3s var(--ease-out-expo),
-                  border-color 0.25s ease,
-                  background-color 0.25s ease,
-                  border-radius 0.25s ease;
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 99999;
-      opacity: 0.75;
+      transition: transform 0.2s var(--ease-out-expo);
+    }
+
+    .comet-star-svg {
+      width: 24px;
+      height: 24px;
+      filter: drop-shadow(0 0 8px #ffffff) drop-shadow(0 0 16px var(--primary));
+      animation: pulseCometStar 2.5s infinite ease-in-out;
+    }
+
+    @keyframes pulseCometStar {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.18) rotate(45deg); }
     }
 
     .cursor-pill {
+      position: fixed;
+      top: 0;
+      left: 0;
       font-family: var(--font-mono);
-      font-size: 0.56rem;
+      font-size: 0.58rem;
       font-weight: 700;
       color: #fff;
       background: linear-gradient(135deg, var(--primary), var(--secondary));
-      padding: 2px 8px;
+      padding: 3px 9px;
       border-radius: 100px;
       opacity: 0;
-      transform: translateY(28px) scale(0.85);
-      transition: all 0.22s var(--ease-out-expo);
+      transform: translate(-50%, 18px) scale(0.85);
+      transition: opacity 0.22s var(--ease-out-expo), transform 0.22s var(--ease-out-expo);
       white-space: nowrap;
-      box-shadow: 0 4px 14px rgba(0, 210, 255, 0.35);
+      box-shadow: 0 4px 16px rgba(0, 210, 255, 0.45);
+      z-index: 100001;
     }
 
-    body.cursor-hover .cursor-halo {
-      width: 64px;
-      height: 64px;
-      border-color: var(--accent);
-      background: rgba(255, 42, 133, 0.08);
-      border-radius: 18px;
-      opacity: 1;
+    body.cursor-hover .comet-head-node {
+      transform: translate(-50%, -50%) scale(1.35);
     }
 
     body.cursor-hover .cursor-pill {
       opacity: 1;
-      transform: translateY(42px) scale(1);
+      transform: translate(-50%, 24px) scale(1);
     }
 
-    body.cursor-click .cursor-halo {
-      width: 28px;
-      height: 28px;
-      background: rgba(0, 210, 255, 0.25);
+    body.cursor-click .comet-head-node {
+      transform: translate(-50%, -50%) scale(0.8);
     }
 
     /* ==========================================================================
@@ -451,7 +440,7 @@
       transform: rotate(180deg);
     }
 
-    /* Desktop-Only Header CTA (Hidden on Mobile as requested) */
+    /* Desktop-Only Header CTA (Hidden on Mobile) */
     .nav-cta-desktop {
       padding: 0.5rem 1.15rem !important;
       font-size: 0.8rem !important;
@@ -1826,17 +1815,27 @@
   <!-- 3D WebGL Morphing Torus Sculpture Canvas -->
   <canvas id="webgl-canvas"></canvas>
 
-  <!-- 2D Liquid Aurora Silk & Shockwave Ripple Canvas (Replaces Molecular Lines) -->
-  <canvas id="aurora-fx-canvas"></canvas>
+  <!-- 2D Glowing Comet Tail & Cosmic Stardust Canvas (Traces Mouse & Mobile Swipes) -->
+  <canvas id="comet-fx-canvas"></canvas>
 
   <div class="spatial-grid-overlay"></div>
 
-  <!-- Custom Magnetic Studio Cursor (Desktop) -->
+  <!-- Custom Glowing Comet Star Cursor (Desktop) -->
   <div id="cursor-wrapper">
-    <div class="cursor-halo" id="cursorHalo">
-      <span class="cursor-pill" id="cursorPill">EXPLORE</span>
+    <div class="comet-head-node" id="cometHeadNode">
+      <svg class="comet-star-svg" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="16" cy="16" r="5" fill="#ffffff"/>
+        <path d="M16 1L18.8 13.2L31 16L18.8 18.8L16 31L13.2 18.8L1 16L13.2 13.2L16 1Z" fill="url(#cometStarGrad)"/>
+        <defs>
+          <radialGradient id="cometStarGrad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(16 16) rotate(90) scale(15)">
+            <stop stop-color="#ffffff"/>
+            <stop offset="0.45" stop-color="var(--primary)"/>
+            <stop offset="1" stop-color="var(--accent)" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+      </svg>
     </div>
-    <div class="cursor-dot" id="cursorDot"></div>
+    <span class="cursor-pill" id="cursorPill">EXPLORE</span>
   </div>
 
   <!-- Upper Floating Bar (Clean on Mobile + Light/Dark Switch) -->
@@ -1934,7 +1933,7 @@
         <!-- Interactive Instant Project Scope & PKR Estimator -->
         <div class="spotlight-card estimator-card reveal-on-scroll" data-cursor="CONFIGURE">
           <div class="estimator-topbar">
-            <span><i class="fas fa-Sliders" style="color:var(--primary);"></i> INTERACTIVE SOLUTION ARCHITECT</span>
+            <span><i class="fas fa-sliders" style="color:var(--primary);"></i> INTERACTIVE SOLUTION ARCHITECT</span>
             <span>INSTANT PKR QUOTE</span>
           </div>
 
@@ -2772,12 +2771,15 @@
     }
 
     /* ==========================================================================
-       2. NEW LIQUID AURORA SILK & SHOCKWAVE RIPPLE ENGINE (NO MOLECULAR LINES)
+       2. GLOWING COMET CURSOR & TAIL ENGINE (DESKTOP MOUSE + MOBILE SWIPE)
        ========================================================================== */
-    function initAuroraSilkEngine() {
-      const canvas = document.getElementById('aurora-fx-canvas');
+    function initCometCursorAndTailEngine() {
+      const canvas = document.getElementById('comet-fx-canvas');
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
+
+      const cometHead = document.getElementById('cometHeadNode');
+      const cursorPill = document.getElementById('cursorPill');
 
       function resize() {
         canvas.width = window.innerWidth;
@@ -2786,127 +2788,208 @@
       resize();
       window.addEventListener('resize', resize);
 
-      const silkTrail = [];
+      const tailNodes = [];
+      const sparks = [];
       const shockwaves = [];
-      const stardust = [];
 
-      function getColors() {
+      let pointerX = window.innerWidth / 2;
+      let pointerY = window.innerHeight / 2;
+      let headX = pointerX;
+      let headY = pointerY;
+      let isPointerActive = false;
+
+      function getBrandColors() {
         const style = getComputedStyle(document.documentElement);
         return {
-          p: style.getPropertyValue('--primary').trim() || '#00d2ff',
-          s: style.getPropertyValue('--secondary').trim() || '#7928ca',
-          a: style.getPropertyValue('--accent').trim() || '#ff2a85'
+          primary: style.getPropertyValue('--primary').trim() || '#00d2ff',
+          secondary: style.getPropertyValue('--secondary').trim() || '#7928ca',
+          accent: style.getPropertyValue('--accent').trim() || '#ff2a85'
         };
       }
 
-      function addRibbonPoint(x, y) {
-        silkTrail.push({ x, y, life: 1.0 });
-        if (silkTrail.length > 26) silkTrail.shift();
+      function pushCometTrailPoint(x, y) {
+        tailNodes.push({ x, y, life: 1.0 });
+        if (tailNodes.length > 36) {
+          tailNodes.shift();
+        }
 
-        // Subtle rising stardust ember along the ribbon
-        if (Math.random() < 0.35) {
-          const cols = getColors();
-          stardust.push({
-            x: x + (Math.random() - 0.5) * 16,
-            y: y + (Math.random() - 0.5) * 16,
-            vx: (Math.random() - 0.5) * 0.8,
-            vy: -0.6 - Math.random() * 1.2,
-            radius: 1.5 + Math.random() * 2.2,
-            alpha: 0.9,
-            color: Math.random() > 0.5 ? cols.p : cols.a
+        // Emit subtle glowing cosmic dust particles from the comet tail
+        if (Math.random() < 0.48) {
+          const cols = getBrandColors();
+          sparks.push({
+            x: x + (Math.random() - 0.5) * 10,
+            y: y + (Math.random() - 0.5) * 10,
+            vx: (Math.random() - 0.5) * 1.3,
+            vy: (Math.random() - 0.5) * 1.3 + 0.3,
+            radius: 1.2 + Math.random() * 2.2,
+            alpha: 0.95,
+            color: Math.random() > 0.45 ? cols.primary : '#ffffff'
           });
         }
       }
 
-      function spawnShockwave(x, y) {
-        const cols = getColors();
+      function triggerCometBurst(x, y) {
+        const cols = getBrandColors();
         shockwaves.push({
           x,
           y,
           radius: 4,
-          maxRadius: 85,
+          maxRadius: 70,
           alpha: 0.85,
-          color: cols.p
+          color: cols.primary
         });
 
-        for (let i = 0; i < 8; i++) {
-          const angle = (Math.PI * 2 * i) / 8;
-          stardust.push({
+        for (let i = 0; i < 12; i++) {
+          const angle = (Math.PI * 2 * i) / 12 + Math.random() * 0.2;
+          const speed = 1.8 + Math.random() * 2.6;
+          sparks.push({
             x,
             y,
-            vx: Math.cos(angle) * 2.2,
-            vy: Math.sin(angle) * 2.2,
-            radius: 2.2,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed,
+            radius: 1.8 + Math.random() * 2,
             alpha: 1,
-            color: i % 2 === 0 ? cols.p : cols.a
+            color: i % 2 === 0 ? '#ffffff' : cols.primary
           });
         }
       }
 
+      // Desktop Mouse Tracking
+      window.addEventListener('mousemove', e => {
+        pointerX = e.clientX;
+        pointerY = e.clientY;
+        isPointerActive = true;
+        pushCometTrailPoint(pointerX, pointerY);
+
+        const hoverEl = e.target.closest('[data-cursor], a, button');
+        if (hoverEl) {
+          document.body.classList.add('cursor-hover');
+          if (cursorPill) cursorPill.textContent = hoverEl.getAttribute('data-cursor') || 'EXPLORE';
+        } else {
+          document.body.classList.remove('cursor-hover');
+        }
+      });
+
+      window.addEventListener('mousedown', e => {
+        document.body.classList.add('cursor-click');
+        triggerCometBurst(e.clientX, e.clientY);
+      });
+
+      window.addEventListener('mouseup', () => {
+        document.body.classList.remove('cursor-click');
+      });
+
+      // Mobile Touch Swipe Comet Tracking
       window.addEventListener('touchstart', e => {
         const t = e.touches[0];
         if (t) {
-          silkTrail.length = 0; // Start fresh ribbon stroke
-          addRibbonPoint(t.clientX, t.clientY);
-          spawnShockwave(t.clientX, t.clientY);
+          tailNodes.length = 0;
+          pointerX = t.clientX;
+          pointerY = t.clientY;
+          pushCometTrailPoint(pointerX, pointerY);
+          triggerCometBurst(pointerX, pointerY);
         }
       }, { passive: true });
 
       window.addEventListener('touchmove', e => {
         const t = e.touches[0];
-        if (t) addRibbonPoint(t.clientX, t.clientY);
+        if (t) {
+          pointerX = t.clientX;
+          pointerY = t.clientY;
+          pushCometTrailPoint(pointerX, pointerY);
+        }
       }, { passive: true });
 
-      window.addEventListener('mousedown', e => {
-        spawnShockwave(e.clientX, e.clientY);
-      });
-
-      function renderAuroraFX() {
+      function renderCometLoop() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        const cols = getColors();
+        const cols = getBrandColors();
 
-        // 1. Draw Smooth Quadratic Bezier Liquid Silk Ribbon
-        if (silkTrail.length > 2) {
+        // Smoothly interpolate Desktop Comet Star Icon & Context Pill
+        headX += (pointerX - headX) * 0.35;
+        headY += (pointerY - headY) * 0.35;
+        if (cometHead && isPointerActive) {
+          cometHead.style.left = `${headX}px`;
+          cometHead.style.top = `${headY}px`;
+        }
+        if (cursorPill && isPointerActive) {
+          cursorPill.style.left = `${headX}px`;
+          cursorPill.style.top = `${headY}px`;
+        }
+
+        // 1. Render Tapered Glowing Comet Tail
+        if (tailNodes.length > 2) {
           ctx.save();
           ctx.lineCap = 'round';
           ctx.lineJoin = 'round';
 
-          for (let i = 1; i < silkTrail.length - 1; i++) {
-            const p0 = silkTrail[i - 1];
-            const p1 = silkTrail[i];
-            const p2 = silkTrail[i + 1];
+          for (let i = 1; i < tailNodes.length - 1; i++) {
+            const p0 = tailNodes[i - 1];
+            const p1 = tailNodes[i];
+            const p2 = tailNodes[i + 1];
 
             const mid1X = (p0.x + p1.x) / 2;
             const mid1Y = (p0.y + p1.y) / 2;
             const mid2X = (p1.x + p2.x) / 2;
             const mid2Y = (p1.y + p2.y) / 2;
 
+            // Progress from tail tip (0.0) to comet head (1.0)
+            const progress = i / tailNodes.length;
+            const alpha = Math.max(0, progress * p1.life);
+
+            // Outer glowing plasma coma
             ctx.beginPath();
             ctx.moveTo(mid1X, mid1Y);
             ctx.quadraticCurveTo(p1.x, p1.y, mid2X, mid2Y);
-
-            const ratio = i / silkTrail.length;
-            ctx.strokeStyle = ratio > 0.5 ? cols.p : cols.a;
-            ctx.lineWidth = ratio * 12 * p1.life;
-            ctx.globalAlpha = p1.life * 0.45;
-            ctx.shadowColor = cols.p;
-            ctx.shadowBlur = 18;
+            ctx.strokeStyle = progress > 0.45 ? cols.primary : cols.accent;
+            ctx.lineWidth = Math.max(1, progress * 16 * p1.life);
+            ctx.globalAlpha = alpha * 0.45;
+            ctx.shadowColor = cols.primary;
+            ctx.shadowBlur = 20;
             ctx.stroke();
+
+            // Inner white-hot comet core stream
+            if (progress > 0.35) {
+              ctx.beginPath();
+              ctx.moveTo(mid1X, mid1Y);
+              ctx.quadraticCurveTo(p1.x, p1.y, mid2X, mid2Y);
+              ctx.strokeStyle = '#ffffff';
+              ctx.lineWidth = Math.max(0.8, progress * 5.5 * p1.life);
+              ctx.globalAlpha = alpha * 0.9;
+              ctx.shadowBlur = 8;
+              ctx.stroke();
+            }
           }
+
+          // Bright Glowing Head Orb at the leading point (Great on Mobile Touch Swipes too)
+          const newest = tailNodes[tailNodes.length - 1];
+          if (newest && newest.life > 0.2) {
+            const grad = ctx.createRadialGradient(newest.x, newest.y, 1, newest.x, newest.y, 18 * newest.life);
+            grad.addColorStop(0, '#ffffff');
+            grad.addColorStop(0.4, cols.primary);
+            grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            ctx.fillStyle = grad;
+            ctx.globalAlpha = newest.life;
+            ctx.beginPath();
+            ctx.arc(newest.x, newest.y, 18 * newest.life, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
           ctx.restore();
         }
 
-        // Decay silk ribbon points smoothly
-        for (let i = silkTrail.length - 1; i >= 0; i--) {
-          silkTrail[i].life -= 0.038;
-          if (silkTrail[i].life <= 0) silkTrail.splice(i, 1);
+        // Decay Comet Tail Points smoothly even when mouse stops
+        for (let i = tailNodes.length - 1; i >= 0; i--) {
+          tailNodes[i].life -= 0.036;
+          if (tailNodes[i].life <= 0) {
+            tailNodes.splice(i, 1);
+          }
         }
 
-        // 2. Draw Expanding Glass Shockwave Ripples
+        // 2. Render Expanding Click/Tap Shockwaves
         for (let i = shockwaves.length - 1; i >= 0; i--) {
           const sw = shockwaves[i];
-          sw.radius += (sw.maxRadius - sw.radius) * 0.14;
-          sw.alpha -= 0.032;
+          sw.radius += (sw.maxRadius - sw.radius) * 0.15;
+          sw.alpha -= 0.035;
 
           if (sw.alpha <= 0) {
             shockwaves.splice(i, 1);
@@ -2920,37 +3003,37 @@
           ctx.lineWidth = 2;
           ctx.globalAlpha = sw.alpha;
           ctx.shadowColor = sw.color;
-          ctx.shadowBlur = 14;
+          ctx.shadowBlur = 12;
           ctx.stroke();
           ctx.restore();
         }
 
-        // 3. Draw Rising Glowing Stardust Embers (No connecting lines!)
-        for (let i = stardust.length - 1; i >= 0; i--) {
-          const s = stardust[i];
-          s.x += s.vx;
-          s.y += s.vy;
-          s.alpha -= 0.025;
+        // 3. Render Cosmic Stardust Sparks
+        for (let i = sparks.length - 1; i >= 0; i--) {
+          const sp = sparks[i];
+          sp.x += sp.vx;
+          sp.y += sp.vy;
+          sp.alpha -= 0.028;
 
-          if (s.alpha <= 0) {
-            stardust.splice(i, 1);
+          if (sp.alpha <= 0) {
+            sparks.splice(i, 1);
             continue;
           }
 
           ctx.save();
           ctx.beginPath();
-          ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
-          ctx.fillStyle = s.color;
-          ctx.globalAlpha = s.alpha;
-          ctx.shadowColor = s.color;
-          ctx.shadowBlur = 10;
+          ctx.arc(sp.x, sp.y, sp.radius, 0, Math.PI * 2);
+          ctx.fillStyle = sp.color;
+          ctx.globalAlpha = sp.alpha;
+          ctx.shadowColor = cols.primary;
+          ctx.shadowBlur = 8;
           ctx.fill();
           ctx.restore();
         }
 
-        requestAnimationFrame(renderAuroraFX);
+        requestAnimationFrame(renderCometLoop);
       }
-      renderAuroraFX();
+      renderCometLoop();
     }
 
     /* ==========================================================================
@@ -3266,34 +3349,8 @@
     }
 
     /* ==========================================================================
-       7. CUSTOM CURSOR, SPOTLIGHT CARDS & SCROLL TELEMETRY
+       7. SPOTLIGHT CARDS & SCROLL TELEMETRY
        ========================================================================== */
-    const cursorDot = document.getElementById('cursorDot');
-    const cursorHalo = document.getElementById('cursorHalo');
-    const cursorPill = document.getElementById('cursorPill');
-    let mX = window.innerWidth / 2, mY = window.innerHeight / 2, hX = mX, hY = mY;
-
-    window.addEventListener('mousemove', e => {
-      mX = e.clientX; mY = e.clientY;
-      if (cursorDot) { cursorDot.style.left = `${mX}px`; cursorDot.style.top = `${mY}px`; }
-
-      const hoverEl = e.target.closest('[data-cursor], a, button');
-      if (hoverEl) {
-        document.body.classList.add('cursor-hover');
-        cursorPill.textContent = hoverEl.getAttribute('data-cursor') || 'SELECT';
-      } else {
-        document.body.classList.remove('cursor-hover');
-      }
-    });
-
-    function loopCursor() {
-      hX += (mX - hX) * 0.18; hY += (mY - hY) * 0.18;
-      if (cursorHalo) { cursorHalo.style.left = `${hX}px`; cursorHalo.style.top = `${hY}px`; }
-      requestAnimationFrame(loopCursor);
-    }
-    loopCursor();
-
-    // Spotlight radial hover tracking on cards
     document.querySelectorAll('.spotlight-card').forEach(card => {
       card.addEventListener('mousemove', e => {
         const rect = card.getBoundingClientRect();
@@ -3304,7 +3361,7 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       renderTestimonials();
-      initAuroraSilkEngine();
+      initCometCursorAndTailEngine();
       initThreeSculpture();
 
       const revObserver = new IntersectionObserver(entries => {
